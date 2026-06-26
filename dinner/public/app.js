@@ -365,6 +365,20 @@ function escapeHtml(text) {
     .replace(/"/g, "&quot;");
 }
 
+async function parseJsonResponse(response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    const isHtml = /^\s*</.test(text);
+    throw new Error(
+      isHtml
+        ? "Server returned HTML instead of JSON — restart with: py server.py"
+        : "Invalid response from server"
+    );
+  }
+}
+
 function renderSavingsList(deals) {
   if (!deals?.length) {
     savingsPanel.hidden = true;
@@ -416,7 +430,7 @@ fetchSalesBtn.addEventListener("click", async () => {
       body: JSON.stringify({ enrichSavings: true })
     });
 
-    const data = await response.json();
+    const data = await parseJsonResponse(response);
     if (!response.ok) {
       throw new Error(data.error || "Could not fetch sales");
     }
@@ -453,7 +467,7 @@ storedSalesBtn.addEventListener("click", async () => {
 
   try {
     const response = await fetch("/api/stored-sales");
-    const data = await response.json();
+    const data = await parseJsonResponse(response);
     if (!response.ok) {
       throw new Error(data.error || "No stored sales found");
     }
