@@ -129,9 +129,25 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 
+.fetch-row-split {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.fetch-row-split .fetch-btn {
+  flex: 1;
+  padding: 0.85rem 1rem;
+}
+
 .fetch-btn.full-width {
   width: 100%;
   padding: 0.85rem 1rem;
+}
+
+@media (max-width: 480px) {
+  .fetch-row-split {
+    flex-direction: column;
+  }
 }
 
 .fetch-status {

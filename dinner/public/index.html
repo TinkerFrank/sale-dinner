@@ -21,12 +21,15 @@
       <section class="panel input-panel">
         <div class="panel-head">
           <h2>What's on sale?</h2>
-          <p>Load this week's deals from your Apify dataset, or enter items manually.</p>
+          <p>Reload fresh deals from Apify, use your last saved deals, or enter items manually.</p>
         </div>
 
-        <div class="fetch-row">
-          <button type="button" id="fetch-sales-btn" class="btn-secondary fetch-btn full-width">
-            ↓ Load sales from Apify
+        <div class="fetch-row fetch-row-split">
+          <button type="button" id="fetch-sales-btn" class="btn-secondary fetch-btn">
+            ↻ Reload from Apify
+          </button>
+          <button type="button" id="stored-sales-btn" class="btn-secondary fetch-btn">
+            🗄 Use stored sales
           </button>
         </div>
         <p id="fetch-status" class="fetch-status" hidden></p>

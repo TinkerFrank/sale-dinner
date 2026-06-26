@@ -1,5 +1,6 @@
 const saleInput = document.getElementById("sale-items");
 const fetchSalesBtn = document.getElementById("fetch-sales-btn");
+const storedSalesBtn = document.getElementById("stored-sales-btn");
 const fetchStatus = document.getElementById("fetch-status");
 const savingsPanel = document.getElementById("savings-panel");
 const savingsList = document.getElementById("savings-list");
@@ -387,12 +388,25 @@ function renderSavingsList(deals) {
   }).join("");
 }
 
+function applySalesData(data, { cached } = {}) {
+  saleInput.value = data.saleItems.join("\n");
+  loadedDeals = data.deals || [];
+  renderSavingsList(data.deals);
+  const store = data.supermarket ? ` from ${data.supermarket}` : "";
+  const withSavings = (data.deals || []).filter((d) => d.savingsText || d.promotionTag).length;
+  const cachedNote = cached && data.cachedAt ? ` · stored ${data.cachedAt}` : "";
+  fetchStatus.className = "fetch-status";
+  fetchStatus.textContent = `Loaded ${data.count} deals${store} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching${cachedNote}.`;
+  saleInput.focus();
+}
+
 fetchSalesBtn.addEventListener("click", async () => {
   fetchSalesBtn.disabled = true;
-  fetchSalesBtn.textContent = "Loading sales…";
+  storedSalesBtn.disabled = true;
+  fetchSalesBtn.textContent = "Reloading…";
   fetchStatus.hidden = false;
   fetchStatus.className = "fetch-status loading";
-  fetchStatus.textContent = "Loading Apify deals and checking Jumbo pages for savings…";
+  fetchStatus.textContent = "Running the Apify scraper and checking Jumbo pages for savings… this can take a minute.";
   savingsPanel.hidden = true;
 
   try {
@@ -414,22 +428,53 @@ fetchSalesBtn.addEventListener("click", async () => {
       return;
     }
 
-    saleInput.value = data.saleItems.join("\n");
-    loadedDeals = data.deals || [];
-    renderSavingsList(data.deals);
-    const store = data.supermarket ? ` from ${data.supermarket}` : "";
-    const withSavings = data.deals.filter((d) => d.savingsText || d.promotionTag).length;
-    fetchStatus.className = "fetch-status";
-    fetchStatus.textContent = `Loaded ${data.count} deals${store} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
-    showToast(`Loaded ${withSavings} deals with savings`);
-    saleInput.focus();
+    applySalesData(data, { cached: false });
+    const withSavings = (data.deals || []).filter((d) => d.savingsText || d.promotionTag).length;
+    showToast(`Loaded ${withSavings} deals with savings (saved locally)`);
   } catch (error) {
     fetchStatus.className = "fetch-status error";
     fetchStatus.textContent = error.message;
     showToast(error.message);
   } finally {
     fetchSalesBtn.disabled = false;
-    fetchSalesBtn.textContent = "↓ Load sales from Apify";
+    storedSalesBtn.disabled = false;
+    fetchSalesBtn.textContent = "↻ Reload from Apify";
+  }
+});
+
+storedSalesBtn.addEventListener("click", async () => {
+  fetchSalesBtn.disabled = true;
+  storedSalesBtn.disabled = true;
+  storedSalesBtn.textContent = "Loading…";
+  fetchStatus.hidden = false;
+  fetchStatus.className = "fetch-status loading";
+  fetchStatus.textContent = "Loading your stored sales…";
+  savingsPanel.hidden = true;
+
+  try {
+    const response = await fetch("/api/stored-sales");
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || "No stored sales found");
+    }
+
+    if (!data.saleItems?.length) {
+      fetchStatus.className = "fetch-status error";
+      fetchStatus.textContent = "No stored sale items found.";
+      showToast("No stored sales");
+      return;
+    }
+
+    applySalesData(data, { cached: true });
+    showToast("Loaded stored sales");
+  } catch (error) {
+    fetchStatus.className = "fetch-status error";
+    fetchStatus.textContent = error.message;
+    showToast(error.message);
+  } finally {
+    fetchSalesBtn.disabled = false;
+    storedSalesBtn.disabled = false;
+    storedSalesBtn.textContent = "🗄 Use stored sales";
   }
 });
 
