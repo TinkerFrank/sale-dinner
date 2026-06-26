@@ -787,7 +787,7 @@ suggestBtn.addEventListener("click", async () => {
       body: JSON.stringify({ saleItems, limit: 3, deals: loadedDeals })
     });
 
-    const data = await response.json();
+    const data = await parseJsonResponse(response);
     renderRecipeCards(data.suggestions, data.saleItems);
 
     resultsPanel.hidden = false;
@@ -815,6 +815,20 @@ function escapeHtml(text) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+async function parseJsonResponse(response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    const preview = text.trim().slice(0, 80);
+    throw new Error(
+      preview.startsWith("<") || preview.startsWith("A server")
+        ? "API unavailable — check Vercel env vars and redeploy"
+        : `Invalid server response: ${preview}`
+    );
+  }
 }
 
 function renderSavingsList(deals) {
@@ -859,7 +873,7 @@ async function loadSalesFromApi({ silent = false } = {}) {
       body: JSON.stringify({ enrichSavings: true })
     });
 
-    const data = await response.json();
+    const data = await parseJsonResponse(response);
     if (!response.ok) {
       throw new Error(data.error || "Could not fetch sales");
     }
@@ -909,7 +923,7 @@ stepConfirmBtn?.addEventListener("click", () => resolveStepConfirm(true));
 loadVoices();
 
 fetch("/api/health")
-  .then((res) => res.json())
+  .then((res) => parseJsonResponse(res))
   .then((data) => {
     if (!data.elevenlabsConfigured) {
       showToast("Assisted-AI voice key missing — audio won't work");

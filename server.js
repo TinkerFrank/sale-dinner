@@ -6,14 +6,13 @@ const envPath = fs.existsSync(path.join(__dirname, ".env"))
 require("dotenv").config({ path: envPath });
 
 const express = require("express");
-const path = require("path");
 const { suggestRecipes, getRecipeById } = require("./recipes");
 const { buildFakeSalesResponse } = require("./fake-sales");
 const { fetchLocalSales } = require("./apify-client");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const IS_VERCEL = Boolean(process.env.VERCEL);
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
 const APIFY_DATASET_ID = process.env.APIFY_DATASET_ID;
@@ -22,10 +21,8 @@ const DEFAULT_VOICE_ID = "21m00Tcm4TlvDq8ikWAM";
 const TTS_MODEL = "eleven_turbo_v2_5";
 
 app.use(express.json({ limit: "1mb" }));
-app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/api/health", (_req, res) => {
-  res.json({
+app.get("/api/health", (_req, res) => {  res.json({
     ok: true,
     elevenlabsConfigured: Boolean(ELEVENLABS_API_KEY),
     apifyConfigured: Boolean(APIFY_TOKEN),
@@ -152,9 +149,12 @@ app.get("/api/voices", async (_req, res) => {
   }
 });
 
-app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+if (!IS_VERCEL) {
+  app.use(express.static(path.join(__dirname, "public")));
+  app.get("*", (_req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  });
+}
 
 module.exports = app;
 
