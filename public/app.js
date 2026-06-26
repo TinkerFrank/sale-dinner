@@ -870,7 +870,7 @@ async function loadSalesFromApi({ silent = false } = {}) {
     const response = await fetch("/api/fetch-sales", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ enrichSavings: true })
+      body: JSON.stringify({ enrichSavings: true, refresh: !silent }),
     });
 
     const data = await parseJsonResponse(response);
@@ -891,10 +891,12 @@ async function loadSalesFromApi({ silent = false } = {}) {
     const store = data.supermarket ? ` from ${data.supermarket}` : "";
     const withSavings = data.deals.filter((d) => d.savingsText || d.promotionTag).length;
     const demoLabel = data.demo ? " (demo)" : "";
+    const cacheLabel = data.cached ? " (cached)" : "";
     fetchStatus.className = "status-text";
-    fetchStatus.textContent = `Loaded ${data.count} deals${store}${demoLabel} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
+    fetchStatus.textContent = `Loaded ${data.count} deals${store}${demoLabel}${cacheLabel} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
     if (!silent) {
-      showToast(data.demo ? `Loaded ${withSavings} demo deals` : `Loaded ${withSavings} deals with savings`);
+      const label = data.demo ? "demo" : data.cached ? "cached" : "live";
+      showToast(`Loaded ${withSavings} ${label} deals with savings`);
       saleInput.focus();
     }
   } catch (error) {
@@ -928,7 +930,7 @@ fetch("/api/health")
     if (!data.elevenlabsConfigured) {
       showToast("Assisted-AI voice key missing — audio won't work");
     }
-    if (!data.apifyConfigured || data.demoSalesAvailable) {
+    if (!data.apifyConfigured || data.demoSalesAvailable || data.cachedSalesAvailable) {
       loadSalesFromApi({ silent: true });
     }
   })

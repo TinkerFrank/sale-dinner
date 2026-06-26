@@ -8,7 +8,7 @@ require("dotenv").config({ path: envPath });
 const express = require("express");
 const { suggestRecipes, getRecipeById } = require("./recipes");
 const { buildFakeSalesResponse } = require("./fake-sales");
-const { fetchLocalSales } = require("./apify-client");
+const { fetchLocalSales, loadBundledCache } = require("./apify-client");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,30 +22,35 @@ const TTS_MODEL = "eleven_turbo_v2_5";
 
 app.use(express.json({ limit: "1mb" }));
 
-app.get("/api/health", (_req, res) => {  res.json({
+app.get("/api/health", (_req, res) => {
+  res.json({
     ok: true,
     elevenlabsConfigured: Boolean(ELEVENLABS_API_KEY),
     apifyConfigured: Boolean(APIFY_TOKEN),
     llmConfigured: false,
-    demoSalesAvailable: true,
+    demoSalesAvailable: !APIFY_TOKEN,
+    cachedSalesAvailable: Boolean(loadBundledCache()),
+    isVercel: IS_VERCEL,
   });
 });
 
 app.post("/api/fetch-sales", async (req, res) => {
+  const refresh = Boolean(req.body?.refresh);
+
   if (!APIFY_TOKEN) {
-    return res.json(buildFakeSalesResponse());
+    return res.json(loadBundledCache() || buildFakeSalesResponse());
   }
 
   try {
     const result = await fetchLocalSales(APIFY_TOKEN, {
       datasetId: APIFY_DATASET_ID || undefined,
       actorId: APIFY_ACTOR_ID,
-      startNewRun: Boolean(req.body?.startNewRun),
+      refresh: refresh || !IS_VERCEL,
     });
     res.json(result);
   } catch (error) {
     console.error("Fetch sales error:", error.message);
-    res.json(buildFakeSalesResponse());
+    res.json(loadBundledCache() || buildFakeSalesResponse());
   }
 });
 

@@ -1,7 +1,12 @@
 /** Fetch grocery sales via Apify (Node — used on Vercel). */
 
+const fs = require("fs");
+const path = require("path");
+
 const APIFY_BASE = "https://api.apify.com/v2";
 const ACTOR_ID = "harvestedge~dutch-supermarkets-all-11";
+const VERCEL_FETCH_TIMEOUT_MS = 8000;
+const CACHE_FILE = path.join(__dirname, "sales_cache.json");
 
 const DUTCH_TO_INGREDIENT = [
   [/\bzalm\b/, "salmon"],
@@ -52,17 +57,48 @@ function hasDiscount(record) {
   return Boolean(discount);
 }
 
-async function apifyRequest(url, { method = "GET", body } = {}) {
-  const response = await fetch(url, {
-    method,
-    headers: body ? { "Content-Type": "application/json" } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const text = await response.text();
-  if (!response.ok) {
-    throw new Error(`Apify error (${response.status}): ${text}`);
+async function apifyRequest(url, { method = "GET", body, timeoutMs = 15000 } = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {
+      method,
+      signal: controller.signal,
+      headers: body ? { "Content-Type": "application/json" } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const text = await response.text();
+    if (!response.ok) {
+      throw new Error(`Apify error (${response.status}): ${text.slice(0, 200)}`);
+    }
+    return text ? JSON.parse(text) : {};
+  } finally {
+    clearTimeout(timer);
   }
-  return text ? JSON.parse(text) : {};
+}
+
+function loadBundledCache() {
+  try {
+    if (!fs.existsSync(CACHE_FILE)) return null;
+    const data = JSON.parse(fs.readFileSync(CACHE_FILE, "utf8"));
+    if (!data?.saleItems?.length) return null;
+    return {
+      ...data,
+      source: "bundled-cache",
+      cached: true,
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function withTimeout(promise, timeoutMs) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error(`Apify fetch timed out after ${timeoutMs}ms`)), timeoutMs);
+    }),
+  ]);
 }
 
 async function getLatestSuccessfulRun(token, actorId = ACTOR_ID) {
@@ -72,9 +108,9 @@ async function getLatestSuccessfulRun(token, actorId = ACTOR_ID) {
   return items[0] || null;
 }
 
-async function fetchDatasetSales(token, datasetId, { onSaleOnly = false, supermarketFilter = null, limit = 500 } = {}) {
+async function fetchDatasetSales(token, datasetId, { onSaleOnly = false, supermarketFilter = null, limit = 500, timeoutMs = 15000 } = {}) {
   const url = `${APIFY_BASE}/datasets/${datasetId}/items?token=${token}&limit=${limit}`;
-  const data = await apifyRequest(url);
+  const data = await apifyRequest(url, { timeoutMs });
   if (!Array.isArray(data)) {
     throw new Error("Unexpected Apify dataset response");
   }
@@ -148,38 +184,64 @@ async function fetchDatasetSales(token, datasetId, { onSaleOnly = false, superma
   };
 }
 
-async function fetchLocalSales(token, { datasetId, actorId = ACTOR_ID, startNewRun = false } = {}) {
-  if (!token) throw new Error("Apify token is not configured");
+async function fetchFromApify(token, { datasetId, actorId = ACTOR_ID } = {}) {
+  const timeoutMs = process.env.VERCEL ? VERCEL_FETCH_TIMEOUT_MS : 60000;
+  const itemLimit = process.env.VERCEL ? 120 : 500;
 
   if (datasetId) {
-    const result = await fetchDatasetSales(token, datasetId);
+    const result = await fetchDatasetSales(token, datasetId, { limit: itemLimit, timeoutMs });
     result.source = "apify-dataset";
     return result;
   }
 
-  // On Vercel, avoid long-running actor polls — use latest successful run only.
-  if (startNewRun && !process.env.VERCEL) {
-    throw new Error("Starting a new actor run is only supported on the local Python server");
+  const latestRun = await apifyRequest(
+    `${APIFY_BASE}/acts/${actorId}/runs?token=${token}&status=SUCCEEDED&limit=1&desc=1`,
+    { timeoutMs: Math.min(timeoutMs, 5000) }
+  );
+  const run = latestRun?.data?.items?.[0];
+  if (!run?.defaultDatasetId) {
+    throw new Error("No recent Apify run found");
   }
 
-  const latestRun = await getLatestSuccessfulRun(token, actorId);
-  if (latestRun?.defaultDatasetId) {
-    const result = await fetchDatasetSales(token, latestRun.defaultDatasetId, {
-      onSaleOnly: true,
-      supermarketFilter: "jumbo",
-    });
-    result.source = "apify-actor-run";
-    result.actorId = actorId;
-    result.runId = latestRun.id;
-    result.datasetId = latestRun.defaultDatasetId;
-    if (result.saleItems?.length) return result;
+  const result = await fetchDatasetSales(token, run.defaultDatasetId, {
+    onSaleOnly: true,
+    supermarketFilter: "jumbo",
+    limit: itemLimit,
+    timeoutMs,
+  });
+  result.source = "apify-actor-run";
+  result.actorId = actorId;
+  result.runId = run.id;
+  result.datasetId = run.defaultDatasetId;
+  return result;
+}
+
+async function fetchLocalSales(token, { datasetId, actorId = ACTOR_ID, refresh = false } = {}) {
+  if (!token) throw new Error("Apify token is not configured");
+
+  // Vercel functions time out quickly — serve bundled cache unless user explicitly refreshes.
+  if (process.env.VERCEL && !refresh) {
+    const cached = loadBundledCache();
+    if (cached) return cached;
   }
 
-  throw new Error("No recent Apify run with Jumbo sale items found");
+  try {
+    const fetchPromise = fetchFromApify(token, { datasetId, actorId });
+    const timeoutMs = process.env.VERCEL ? VERCEL_FETCH_TIMEOUT_MS : 60000;
+    return await withTimeout(fetchPromise, timeoutMs);
+  } catch (error) {
+    const cached = loadBundledCache();
+    if (cached) {
+      cached.fallbackReason = error.message;
+      return cached;
+    }
+    throw error;
+  }
 }
 
 module.exports = {
   ACTOR_ID,
   fetchLocalSales,
+  loadBundledCache,
   getLatestSuccessfulRun,
 };
