@@ -3,7 +3,6 @@
 
 import json
 import os
-import time
 import urllib.error
 import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -14,7 +13,6 @@ from apify_client import fetch_local_sales
 
 BASE_DIR = Path(__file__).resolve().parent
 PUBLIC_DIR = BASE_DIR / "public"
-SALES_CACHE_FILE = BASE_DIR / "sales_cache.json"
 PORT = int(os.environ.get("PORT", "3000"))
 DEFAULT_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
 TTS_MODEL = "eleven_turbo_v2_5"
@@ -66,7 +64,7 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(200, {
                 "ok": True,
                 "elevenlabsConfigured": bool(ELEVENLABS_API_KEY),
-                "apifyConfigured": bool(APIFY_TOKEN),
+                "apifyConfigured": bool(APIFY_TOKEN and APIFY_DATASET_ID),
                 "llmConfigured": bool(OPENAI_API_KEY),
             })
 
@@ -79,9 +77,6 @@ class Handler(SimpleHTTPRequestHandler):
 
         if self.path == "/api/voices":
             return self.handle_voices()
-
-        if self.path == "/api/stored-sales":
-            return self.handle_stored_sales()
 
         if self.path == "/":
             self.path = "/index.html"
@@ -109,13 +104,14 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_json(200, result)
 
     def handle_fetch_sales(self):
-        if not APIFY_TOKEN:
-            return self.send_json(500, {"error": "Apify token is not configured"})
-
         try:
             body = self.read_json_body()
         except json.JSONDecodeError:
             body = {}
+
+        if not APIFY_TOKEN or not APIFY_DATASET_ID:
+            from fake_sales import build_fake_sales_response
+            return self.send_json(200, build_fake_sales_response())
 
         try:
             result = fetch_local_sales(
@@ -124,36 +120,13 @@ class Handler(SimpleHTTPRequestHandler):
                 dataset_id=APIFY_DATASET_ID,
                 enrich_savings=bool(body.get("enrichSavings", True)),
             )
-            self.save_sales_cache(result)
             self.send_json(200, result)
         except ValueError as error:
             self.send_json(400, {"error": str(error)})
-        except RuntimeError as error:
-            self.send_json(502, {"error": str(error)})
-        except Exception as error:
-            print(f"Fetch sales error: {error}")
-            self.send_json(500, {"error": "Failed to fetch local sales"})
-
-    def save_sales_cache(self, result):
-        try:
-            data = dict(result)
-            data["cachedAt"] = time.strftime("%Y-%m-%d %H:%M:%S")
-            SALES_CACHE_FILE.write_text(
-                json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
-            )
-            print(f"Sales opgeslagen in {SALES_CACHE_FILE.name}")
-        except Exception as error:
-            print(f"Kon sales niet opslaan: {error}")
-
-    def handle_stored_sales(self):
-        if not SALES_CACHE_FILE.exists():
-            return self.send_json(404, {"error": "No stored sales yet. Reload from Apify first."})
-        try:
-            data = json.loads(SALES_CACHE_FILE.read_text(encoding="utf-8"))
-            self.send_json(200, data)
-        except Exception as error:
-            print(f"Kon opgeslagen sales niet lezen: {error}")
-            self.send_json(500, {"error": "Failed to read stored sales"})
+        except (RuntimeError, Exception) as error:
+            print(f"Fetch sales error: {error} — using demo data")
+            from fake_sales import build_fake_sales_response
+            return self.send_json(200, build_fake_sales_response())
 
     def handle_speak(self):
         if not ELEVENLABS_API_KEY:
@@ -243,8 +216,8 @@ def main():
     print(f"Sale Dinner Suggest running at http://localhost:{PORT}")
     if not ELEVENLABS_API_KEY:
         print("Warning: ELEVENLABS_API_KEY is not set. Audio will not work.")
-    if not APIFY_TOKEN:
-        print("Warning: APIFY_TOKEN is not set. Sale fetching will not work.")
+    if not APIFY_TOKEN or not APIFY_DATASET_ID:
+        print("Warning: APIFY_TOKEN or APIFY_DATASET_ID is not set. Sale fetching will not work.")
     if not OPENAI_API_KEY:
         print("Warning: OPENAI_API_KEY is not set. Using rule-based recipe generator.")
     try:

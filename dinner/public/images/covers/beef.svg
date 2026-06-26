@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Beef">
+  <rect width="900" height="600" fill="#f6ede3"/>
+  <ellipse cx="450" cy="340" rx="220" ry="130" fill="#8b4513" opacity="0.35"/>
+  <ellipse cx="450" cy="325" rx="180" ry="100" fill="#a0522d" opacity="0.5"/>
+  <rect x="320" y="290" width="260" height="18" rx="9" fill="#522c25" opacity="0.2"/>
+  <rect x="340" y="320" width="220" height="14" rx="7" fill="#522c25" opacity="0.15"/>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#522c25">BEEF</text>
+</svg>

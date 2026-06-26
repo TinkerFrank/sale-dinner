@@ -3,11 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { suggestRecipes, getRecipeById } = require("./recipes");
+const { buildFakeSalesResponse } = require("./fake-sales");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
+const APIFY_TOKEN = process.env.APIFY_TOKEN;
+const APIFY_DATASET_ID = process.env.APIFY_DATASET_ID;
 const DEFAULT_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"; // Rachel
 const TTS_MODEL = "eleven_turbo_v2_5";
 
@@ -17,8 +20,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/api/health", (_req, res) => {
   res.json({
     ok: true,
-    elevenlabsConfigured: Boolean(ELEVENLABS_API_KEY)
+    elevenlabsConfigured: Boolean(ELEVENLABS_API_KEY),
+    apifyConfigured: Boolean(APIFY_TOKEN && APIFY_DATASET_ID),
+    demoSalesAvailable: true
   });
+});
+
+app.post("/api/fetch-sales", (_req, res) => {
+  res.json(buildFakeSalesResponse());
 });
 
 app.post("/api/suggest", (req, res) => {

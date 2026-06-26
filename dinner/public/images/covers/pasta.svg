@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Pasta">
+  <rect width="900" height="600" fill="#f6ede3"/>
+  <circle cx="760" cy="100" r="160" fill="#c5ddb8" opacity="0.5"/>
+  <ellipse cx="420" cy="360" rx="240" ry="70" fill="#522c25" opacity="0.12"/>
+  <path d="M200 320 Q280 260 360 320 T520 320 T680 320" fill="none" stroke="#e8c468" stroke-width="18" stroke-linecap="round"/>
+  <path d="M220 350 Q300 290 380 350 T540 350 T700 350" fill="none" stroke="#d4a017" stroke-width="16" stroke-linecap="round"/>
+  <path d="M240 380 Q320 320 400 380 T560 380 T720 380" fill="none" stroke="#c03001" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="320" cy="300" r="22" fill="#c03001" opacity="0.7"/>
+  <circle cx="480" cy="285" r="18" fill="#4a7c3f" opacity="0.8"/>
+  <circle cx="560" cy="310" r="20" fill="#c03001" opacity="0.6"/>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#522c25">PASTA</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Shrimp">
+  <rect width="900" height="600" fill="#f6ede3"/>
+  <path d="M200 320 Q280 260 360 320 T520 320 T680 320" fill="none" stroke="#e8c468" stroke-width="14" stroke-linecap="round"/>
+  <path d="M220 350 Q300 290 380 350 T540 350 T700 350" fill="none" stroke="#d4a017" stroke-width="12" stroke-linecap="round"/>
+  <ellipse cx="380" cy="290" rx="45" ry="22" fill="#f4a582" transform="rotate(-20 380 290)"/>
+  <ellipse cx="480" cy="275" rx="42" ry="20" fill="#f4a582" transform="rotate(10 480 275)"/>
+  <ellipse cx="560" cy="295" rx="40" ry="19" fill="#f4a582" transform="rotate(-8 560 295)"/>
+  <circle cx="350" cy="280" r="6" fill="#c03001"/>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#522c25">SHRIMP</text>
+</svg>

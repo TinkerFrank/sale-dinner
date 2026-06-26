@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Tacos">
+  <rect width="900" height="600" fill="#f6ede3"/>
+  <path d="M260 380 L450 240 L640 380 Z" fill="#e8c468"/>
+  <path d="M290 370 L450 270 L610 370 Z" fill="#d4a017"/>
+  <rect x="330" y="330" width="60" height="40" rx="8" fill="#4a7c3f" opacity="0.8"/>
+  <rect x="410" y="310" width="50" height="35" rx="6" fill="#c03001" opacity="0.75"/>
+  <rect x="480" y="325" width="55" height="38" rx="8" fill="#f5f5dc"/>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#522c25">TACOS</text>
+</svg>

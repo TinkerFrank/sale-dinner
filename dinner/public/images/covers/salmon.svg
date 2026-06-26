@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Salmon">
+  <rect width="900" height="600" fill="#f6ede3"/>
+  <ellipse cx="450" cy="330" rx="260" ry="100" fill="#e8956f"/>
+  <ellipse cx="450" cy="315" rx="220" ry="75" fill="#f4a582"/>
+  <path d="M280 310 Q350 280 420 310 T560 310 T620 310" fill="none" stroke="#c03001" stroke-width="3" opacity="0.4"/>
+  <circle cx="350" cy="300" r="8" fill="#522c25" opacity="0.2"/>
+  <circle cx="520" cy="295" r="8" fill="#522c25" opacity="0.2"/>
+  <rect x="300" y="400" width="300" height="16" rx="8" fill="#4a7c3f" opacity="0.5"/>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#522c25">SALMON</text>
+</svg>

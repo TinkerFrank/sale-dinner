@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Sheet pan">
+  <rect width="900" height="600" fill="#f6ede3"/>
+  <rect x="220" y="260" width="460" height="180" rx="16" fill="#522c25" opacity="0.12"/>
+  <rect x="240" y="280" width="420" height="140" rx="12" fill="#d4a574" opacity="0.4"/>
+  <ellipse cx="360" cy="340" rx="50" ry="30" fill="#e8956f" opacity="0.7"/>
+  <circle cx="480" cy="330" r="35" fill="#4a7c3f" opacity="0.65"/>
+  <circle cx="560" cy="350" r="30" fill="#e8c468" opacity="0.6"/>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#522c25">SHEET PAN</text>
+</svg>
