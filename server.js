@@ -1,9 +1,15 @@
-require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
+const envPath = fs.existsSync(path.join(__dirname, ".env"))
+  ? path.join(__dirname, ".env")
+  : path.join(__dirname, "dinner", ".env");
+require("dotenv").config({ path: envPath });
 
 const express = require("express");
 const path = require("path");
 const { suggestRecipes, getRecipeById } = require("./recipes");
 const { buildFakeSalesResponse } = require("./fake-sales");
+const { fetchLocalSales } = require("./apify-client");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +17,8 @@ const PORT = process.env.PORT || 3000;
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
 const APIFY_DATASET_ID = process.env.APIFY_DATASET_ID;
-const DEFAULT_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"; // Rachel
+const APIFY_ACTOR_ID = process.env.APIFY_ACTOR_ID || "harvestedge~dutch-supermarkets-all-11";
+const DEFAULT_VOICE_ID = "21m00Tcm4TlvDq8ikWAM";
 const TTS_MODEL = "eleven_turbo_v2_5";
 
 app.use(express.json({ limit: "1mb" }));
@@ -21,13 +28,28 @@ app.get("/api/health", (_req, res) => {
   res.json({
     ok: true,
     elevenlabsConfigured: Boolean(ELEVENLABS_API_KEY),
-    apifyConfigured: Boolean(APIFY_TOKEN && APIFY_DATASET_ID),
-    demoSalesAvailable: true
+    apifyConfigured: Boolean(APIFY_TOKEN),
+    llmConfigured: false,
+    demoSalesAvailable: true,
   });
 });
 
-app.post("/api/fetch-sales", (_req, res) => {
-  res.json(buildFakeSalesResponse());
+app.post("/api/fetch-sales", async (req, res) => {
+  if (!APIFY_TOKEN) {
+    return res.json(buildFakeSalesResponse());
+  }
+
+  try {
+    const result = await fetchLocalSales(APIFY_TOKEN, {
+      datasetId: APIFY_DATASET_ID || undefined,
+      actorId: APIFY_ACTOR_ID,
+      startNewRun: Boolean(req.body?.startNewRun),
+    });
+    res.json(result);
+  } catch (error) {
+    console.error("Fetch sales error:", error.message);
+    res.json(buildFakeSalesResponse());
+  }
 });
 
 app.post("/api/suggest", (req, res) => {
@@ -65,7 +87,7 @@ app.post("/api/speak", async (req, res) => {
         headers: {
           "Content-Type": "application/json",
           "xi-api-key": ELEVENLABS_API_KEY,
-          Accept: "audio/mpeg"
+          Accept: "audio/mpeg",
         },
         body: JSON.stringify({
           text: text.trim(),
@@ -74,9 +96,9 @@ app.post("/api/speak", async (req, res) => {
             stability: 0.45,
             similarity_boost: 0.8,
             style: 0.2,
-            use_speaker_boost: true
-          }
-        })
+            use_speaker_boost: true,
+          },
+        }),
       }
     );
 
@@ -85,7 +107,7 @@ app.post("/api/speak", async (req, res) => {
       console.error("ElevenLabs error:", response.status, errorText);
       return res.status(response.status).json({
         error: "ElevenLabs request failed",
-        details: errorText
+        details: errorText,
       });
     }
 
@@ -93,7 +115,7 @@ app.post("/api/speak", async (req, res) => {
     res.set({
       "Content-Type": "audio/mpeg",
       "Content-Length": audioBuffer.length,
-      "Cache-Control": "private, max-age=3600"
+      "Cache-Control": "private, max-age=3600",
     });
     res.send(audioBuffer);
   } catch (error) {
@@ -109,7 +131,7 @@ app.get("/api/voices", async (_req, res) => {
 
   try {
     const response = await fetch("https://api.elevenlabs.io/v1/voices", {
-      headers: { "xi-api-key": ELEVENLABS_API_KEY }
+      headers: { "xi-api-key": ELEVENLABS_API_KEY },
     });
 
     if (!response.ok) {
@@ -121,7 +143,7 @@ app.get("/api/voices", async (_req, res) => {
     const voices = (data.voices || []).map((voice) => ({
       id: voice.voice_id,
       name: voice.name,
-      category: voice.category
+      category: voice.category,
     }));
 
     res.json({ voices });
@@ -130,9 +152,20 @@ app.get("/api/voices", async (_req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Sale Dinner Suggest running at http://localhost:${PORT}`);
-  if (!ELEVENLABS_API_KEY) {
-    console.warn("Warning: ELEVENLABS_API_KEY is not set. Audio will not work.");
-  }
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
+module.exports = app;
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Sale Dinner Suggest running at http://localhost:${PORT}`);
+    if (!ELEVENLABS_API_KEY) {
+      console.warn("Warning: ELEVENLABS_API_KEY is not set. Audio will not work.");
+    }
+    if (!APIFY_TOKEN) {
+      console.warn("Warning: APIFY_TOKEN is not set. Demo sales will be used.");
+    }
+  });
+}
