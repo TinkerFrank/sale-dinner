@@ -35,6 +35,11 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.post("/api/fetch-sales", async (req, res) => {
+  if (IS_VERCEL) {
+    const cached = loadBundledCache();
+    return res.json(cached || buildFakeSalesResponse());
+  }
+
   const refresh = Boolean(req.body?.refresh);
 
   if (!APIFY_TOKEN) {
@@ -45,7 +50,7 @@ app.post("/api/fetch-sales", async (req, res) => {
     const result = await fetchLocalSales(APIFY_TOKEN, {
       datasetId: APIFY_DATASET_ID || undefined,
       actorId: APIFY_ACTOR_ID,
-      refresh: refresh || !IS_VERCEL,
+      refresh,
     });
     res.json(result);
   } catch (error) {

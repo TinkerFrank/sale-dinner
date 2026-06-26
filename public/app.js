@@ -854,6 +854,35 @@ function renderSavingsList(deals) {
   }).join("");
 }
 
+async function loadSalesFromStatic() {
+  try {
+    const response = await fetch("/sales-cache.json");
+    if (!response.ok) return null;
+    const data = await response.json();
+    if (!data?.saleItems?.length) return null;
+    return { ...data, cached: true, source: data.source || "static-cache" };
+  } catch {
+    return null;
+  }
+}
+
+function applySalesData(data, { silent = false } = {}) {
+  saleInput.value = data.saleItems.join("\n");
+  loadedDeals = data.deals || [];
+  renderSavingsList(data.deals);
+  const store = data.supermarket ? ` from ${data.supermarket}` : "";
+  const withSavings = (data.deals || []).filter((d) => d.savingsText || d.promotionTag).length;
+  const demoLabel = data.demo ? " (demo)" : "";
+  const cacheLabel = data.cached ? " (cached)" : "";
+  fetchStatus.className = "status-text";
+  fetchStatus.textContent = `Loaded ${data.count} deals${store}${demoLabel}${cacheLabel} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
+  if (!silent) {
+    const label = data.demo ? "demo" : data.cached ? "cached" : "live";
+    showToast(`Loaded ${withSavings} ${label} deals with savings`);
+    saleInput.focus();
+  }
+}
+
 async function loadSalesFromApi({ silent = false } = {}) {
   if (!silent) {
     fetchSalesBtn.disabled = true;
@@ -862,20 +891,23 @@ async function loadSalesFromApi({ silent = false } = {}) {
   fetchStatus.hidden = false;
   fetchStatus.className = "status-text loading";
   fetchStatus.textContent = silent
-    ? "Loading demo Jumbo deals…"
-    : "Loading Jumbo sales from Apify (Dutch Supermarkets actor)…";
+    ? "Loading saved Jumbo deals…"
+    : "Loading Jumbo sale deals…";
   savingsPanel.hidden = true;
 
   try {
-    const response = await fetch("/api/fetch-sales", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ enrichSavings: true, refresh: !silent }),
-    });
+    let data = await loadSalesFromStatic();
 
-    const data = await parseJsonResponse(response);
-    if (!response.ok) {
-      throw new Error(data.error || "Could not fetch sales");
+    if (!data) {
+      const response = await fetch("/api/fetch-sales", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ enrichSavings: true }),
+      });
+      data = await parseJsonResponse(response);
+      if (!response.ok) {
+        throw new Error(data.error || "Could not fetch sales");
+      }
     }
 
     if (!data.saleItems?.length) {
@@ -885,20 +917,7 @@ async function loadSalesFromApi({ silent = false } = {}) {
       return;
     }
 
-    saleInput.value = data.saleItems.join("\n");
-    loadedDeals = data.deals || [];
-    renderSavingsList(data.deals);
-    const store = data.supermarket ? ` from ${data.supermarket}` : "";
-    const withSavings = data.deals.filter((d) => d.savingsText || d.promotionTag).length;
-    const demoLabel = data.demo ? " (demo)" : "";
-    const cacheLabel = data.cached ? " (cached)" : "";
-    fetchStatus.className = "status-text";
-    fetchStatus.textContent = `Loaded ${data.count} deals${store}${demoLabel}${cacheLabel} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
-    if (!silent) {
-      const label = data.demo ? "demo" : data.cached ? "cached" : "live";
-      showToast(`Loaded ${withSavings} ${label} deals with savings`);
-      saleInput.focus();
-    }
+    applySalesData(data, { silent });
   } catch (error) {
     fetchStatus.className = "status-text error";
     fetchStatus.textContent = error.message;
@@ -922,7 +941,11 @@ playAllBtn.addEventListener("click", playAllSteps);
 stopBtn.addEventListener("click", stopAudio);
 stepConfirmBtn?.addEventListener("click", () => resolveStepConfirm(true));
 
-loadVoices();
+const isHostedDeploy = /\.vercel\.app$/i.test(window.location.hostname);
+
+if (!isHostedDeploy) {
+  loadVoices();
+}
 
 fetch("/api/health")
   .then((res) => parseJsonResponse(res))
@@ -930,10 +953,10 @@ fetch("/api/health")
     if (!data.elevenlabsConfigured) {
       showToast("Assisted-AI voice key missing — audio won't work");
     }
-    if (!data.apifyConfigured || data.demoSalesAvailable || data.cachedSalesAvailable) {
+    if (data.staticSalesAvailable || data.demoSalesAvailable || !data.apifyConfigured) {
       loadSalesFromApi({ silent: true });
     }
   })
   .catch(() => {
-    showToast("Start the server with: npm start");
+    loadSalesFromApi({ silent: true });
   });

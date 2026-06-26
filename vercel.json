@@ -3,12 +3,21 @@
   "installCommand": "npm install",
   "outputDirectory": "public",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" }
+    { "source": "/api/suggest", "destination": "/api" },
+    { "source": "/api/speak", "destination": "/api" },
+    { "source": "/api/voices", "destination": "/api" },
+    { "source": "/api/recipes/(.*)", "destination": "/api" }
   ],
   "functions": {
+    "api/health.js": {
+      "memory": 128
+    },
+    "api/fetch-sales.js": {
+      "memory": 256
+    },
     "api/index.js": {
       "maxDuration": 30,
-      "includeFiles": "sales_cache.json"
+      "memory": 1024
     }
   }
 }

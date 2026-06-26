@@ -1,0 +1,862 @@
+{
+  "source": "apify-dataset",
+  "datasetId": "x0n4KTSeG4tdpnttJ",
+  "supermarket": null,
+  "saleItems": [
+    "Melitta CaféBar Selection Espresso Intense Filterkoffie 250 g",
+    "Jumbo's Beste Koffie Snelfiltermaling Aroma 2 x 500 g",
+    "Melitta CaféBar Selection Espresso Classic Filterkoffie 250g",
+    "Jumbo's Beste Koffie Snelfiltermaling Aroma 500 g",
+    "Jumbo's roodmerk filterkoffie 6 x 2 x 500g",
+    "Melitta CaféBar Selection Crema Intense Filterkoffie 250g",
+    "Jumbo's Beste Koffie Snelfiltermaling Decaf 500 g",
+    "Douwe Egberts Aroma Rood Dubbelpak Filterkoffie 2 x 500 g",
+    "Douwe Egberts Aroma Rood Filterkoffie 500 g",
+    "Rood Snelfiltermaling 500 g",
+    "Jumbo's Beste Koffiebonen Dark Roast 1 kg",
+    "Jumbo's Beste Koffiebonen Aroma 1 kg",
+    "La Place Koffiebonen Espresse Arabica 4 x 1000 g",
+    "Jumbo's Beste Koffiebonen Espresso 4 x 1 kg",
+    "La Place Koffiebonen Lungo Originale 1KG",
+    "Jumbo's Lungo Intenso Koffiecups 40 Stuks",
+    "L'OR Espresso Lungo Profondo Aluminium Capsules 20 Stuks 104 g",
+    "Café Royal Vanilla 10 Capsules 50 g",
+    "Café Royal Caramel 10 Capsules 50 g",
+    "Nescafé Cappuccino Koffiedrank 10 x 12,5 g",
+    "Café Royal Dark Chocolate Flavoured Coffee 10 Capsules 50 g",
+    "Jumbo's Beste Koffie Grove Filtermaling Aroma 500 g",
+    "Jumbo's Beste Koffie Snelfiltermaling Biologisch 500 g",
+    "Jumbo's Beste Koffie Snelfiltermaling Goud 500 g",
+    "Jumbo's Beste Koffie Snelfiltermaling Dark Roast 500 g",
+    "Jumbo's Beste Koffie Snelfiltermaling Aroma 250 g",
+    "Gala Koffie Mild Aroma 500 g",
+    "Zonnatura Bio Meergranen Koffie 100 g",
+    "Jumbo's Beste Biologische Koffie Snelfiltermaling 250 g",
+    "NESCAFÉ Dolce Gusto, Koffie Grande , 3 x 16 capsules",
+    "Jumbo's Witte Chocolade Koffie Speculoos 140 g",
+    "Najjar Arabische Koffie 200g",
+    "Jumbo's Beste Koffie Snelfiltermaling Mild 250 g",
+    "Jumbo's Koffiepads Classic 56 Stuks",
+    "Jumbo's beste koffiebonen aroma 4 x 1kg",
+    "Jumbo's Beste Koffiebonen Espresso 1 kg",
+    "La Place Koffiebonen Ristretto 1 kg",
+    "Starbucks® Pike Place Medium Roast koffiebonen 450 gram",
+    "Jumbo Creamer voor Koffie 400 g",
+    "La Place Koffiebonen Dolce 1 kg",
+    "Segafredo Zanetti Intermezzo Roasted Coffee Beans 1000 g",
+    "La Place Koffiebonen Lungo Intenso 1 KG",
+    "Jumbo Creamer voor Koffie 350 g",
+    "Jumbo's Koffiecups 08 Espresso Superlativo 40 Stuks",
+    "Senseo Classic Koffiepads 54 Stuks Maxi Pack 375 g",
+    "Jumbo's Koffiepads Classic 36 Stuks",
+    "Lavazza Espresso Barista Intenso koffiebonen 500g",
+    "Jumbo's Koffiepads Decaf 36 Stuks",
+    "Jumbo Aroma Oploskoffie 200 g",
+    "beans"
+  ],
+  "deals": [
+    {
+      "name": "Café Royal Caramel 10 Capsules 50 g",
+      "ingredients": [
+        "Café Royal Caramel 10 Capsules 50 g"
+      ],
+      "supermarket": null,
+      "price": 4.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/cafe-royal-caramel-10-capsules-50-g-233324STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Café Royal Dark Chocolate Flavoured Coffee 10 Capsules 50 g",
+      "ingredients": [
+        "Café Royal Dark Chocolate Flavoured Coffee 10 Capsules 50 g"
+      ],
+      "supermarket": null,
+      "price": 4.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/cafe-royal-dark-chocolate-flavoured-coffee-10-capsules-50-g-424853PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Café Royal Vanilla 10 Capsules 50 g",
+      "ingredients": [
+        "Café Royal Vanilla 10 Capsules 50 g"
+      ],
+      "supermarket": null,
+      "price": 4.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/cafe-royal-vanilla-10-capsules-50-g-233326STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Douwe Egberts Aroma Rood Dubbelpak Filterkoffie 2 x 500 g",
+      "ingredients": [
+        "Douwe Egberts Aroma Rood Dubbelpak Filterkoffie 2 x 500 g"
+      ],
+      "supermarket": null,
+      "price": 19.79,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/douwe-egberts-aroma-rood-dubbelpak-filterkoffie-2-x-500-g-149986PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Douwe Egberts Aroma Rood Filterkoffie 500 g",
+      "ingredients": [
+        "Douwe Egberts Aroma Rood Filterkoffie 500 g"
+      ],
+      "supermarket": null,
+      "price": 9.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/douwe-egberts-aroma-rood-filterkoffie-500-g-220752PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Douwe Egberts Espresso Bonen Voordeelpak 1000 g",
+      "ingredients": [
+        "beans"
+      ],
+      "supermarket": null,
+      "price": 21.79,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/douwe-egberts-espresso-bonen-voordeelpak-1000-g-390430ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Gala Koffie Mild Aroma 500 g",
+      "ingredients": [
+        "Gala Koffie Mild Aroma 500 g"
+      ],
+      "supermarket": null,
+      "price": 5.69,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/gala-koffie-mild-aroma-500-g-671690ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Aroma Oploskoffie 200 g",
+      "ingredients": [
+        "Jumbo Aroma Oploskoffie 200 g"
+      ],
+      "supermarket": null,
+      "price": 5.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-aroma-oploskoffie-200-g-319462POT",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Creamer voor Koffie 350 g",
+      "ingredients": [
+        "Jumbo Creamer voor Koffie 350 g"
+      ],
+      "supermarket": null,
+      "price": 1.39,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-creamer-voor-koffie-350-g-394272BAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Creamer voor Koffie 400 g",
+      "ingredients": [
+        "Jumbo Creamer voor Koffie 400 g"
+      ],
+      "supermarket": null,
+      "price": 1.59,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-creamer-voor-koffie-400-g-394274POT",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Biologische Koffie Snelfiltermaling 250 g",
+      "ingredients": [
+        "Jumbo's Beste Biologische Koffie Snelfiltermaling 250 g"
+      ],
+      "supermarket": null,
+      "price": 4.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-biologische-koffie-snelfiltermaling-250-g-722922ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Grove Filtermaling Aroma 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Grove Filtermaling Aroma 500 g"
+      ],
+      "supermarket": null,
+      "price": 7.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-grove-filtermaling-aroma-500-g-637314STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Aroma 2 x 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Aroma 2 x 500 g"
+      ],
+      "supermarket": null,
+      "price": 15.18,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-aroma-2-x-500-g-638307PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Aroma 250 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Aroma 250 g"
+      ],
+      "supermarket": null,
+      "price": 4.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-aroma-250-g-637243STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Aroma 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Aroma 500 g"
+      ],
+      "supermarket": null,
+      "price": 7.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-aroma-500-g-637315PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Biologisch 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Biologisch 500 g"
+      ],
+      "supermarket": null,
+      "price": 8.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-biologisch-500-g-722784ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Dark Roast 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Dark Roast 500 g"
+      ],
+      "supermarket": null,
+      "price": 7.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-dark-roast-500-g-637312STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Decaf 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Decaf 500 g"
+      ],
+      "supermarket": null,
+      "price": 8.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-decaf-500-g-637311PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Goud 500 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Goud 500 g"
+      ],
+      "supermarket": null,
+      "price": 7.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-goud-500-g-637313STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffie Snelfiltermaling Mild 250 g",
+      "ingredients": [
+        "Jumbo's Beste Koffie Snelfiltermaling Mild 250 g"
+      ],
+      "supermarket": null,
+      "price": 4.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-mild-250-g-637245STK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffiebonen Aroma 1 kg",
+      "ingredients": [
+        "Jumbo's Beste Koffiebonen Aroma 1 kg"
+      ],
+      "supermarket": null,
+      "price": 15.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-aroma-1-kg-637316ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's beste koffiebonen aroma 4 x 1kg",
+      "ingredients": [
+        "Jumbo's beste koffiebonen aroma 4 x 1kg"
+      ],
+      "supermarket": null,
+      "price": 63.96,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-aroma-4-x-1kg-637316DSL",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffiebonen Dark Roast 1 kg",
+      "ingredients": [
+        "Jumbo's Beste Koffiebonen Dark Roast 1 kg"
+      ],
+      "supermarket": null,
+      "price": 15.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-dark-roast-1-kg-637271ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffiebonen Espresso 1 kg",
+      "ingredients": [
+        "Jumbo's Beste Koffiebonen Espresso 1 kg"
+      ],
+      "supermarket": null,
+      "price": 15.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-espresso-1-kg-637274ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Beste Koffiebonen Espresso 4 x 1 kg",
+      "ingredients": [
+        "Jumbo's Beste Koffiebonen Espresso 4 x 1 kg"
+      ],
+      "supermarket": null,
+      "price": 63.96,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-espresso-4-x-1-kg-637274DSL",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Koffiecups 08 Espresso Superlativo 40 Stuks",
+      "ingredients": [
+        "Jumbo's Koffiecups 08 Espresso Superlativo 40 Stuks"
+      ],
+      "supermarket": null,
+      "price": 9.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-koffiecups-08-espresso-superlativo-40-stuks-719524DS",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Koffiepads Classic 36 Stuks",
+      "ingredients": [
+        "Jumbo's Koffiepads Classic 36 Stuks"
+      ],
+      "supermarket": null,
+      "price": 5.79,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-classic-36-stuks-722002ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Koffiepads Classic 56 Stuks",
+      "ingredients": [
+        "Jumbo's Koffiepads Classic 56 Stuks"
+      ],
+      "supermarket": null,
+      "price": 8.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-classic-56-stuks-720874ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Koffiepads Decaf 36 Stuks",
+      "ingredients": [
+        "Jumbo's Koffiepads Decaf 36 Stuks"
+      ],
+      "supermarket": null,
+      "price": 5.79,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-decaf-36-stuks-721334ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Lungo Intenso Koffiecups 40 Stuks",
+      "ingredients": [
+        "Jumbo's Lungo Intenso Koffiecups 40 Stuks"
+      ],
+      "supermarket": null,
+      "price": 9.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-lungo-intenso-koffiecups-40-stuks-719525DS",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's roodmerk filterkoffie 6 x 2 x 500g",
+      "ingredients": [
+        "Jumbo's roodmerk filterkoffie 6 x 2 x 500g"
+      ],
+      "supermarket": null,
+      "price": 91.08,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-roodmerk-filterkoffie-6-x-2-x-500g-638307DSL",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Witte Chocolade Koffie Speculoos 140 g",
+      "ingredients": [
+        "Jumbo's Witte Chocolade Koffie Speculoos 140 g"
+      ],
+      "supermarket": null,
+      "price": 2.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/jumbo-s-witte-chocolade-koffie-speculoos-140-g-685855PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "L'OR Espresso Lungo Profondo Aluminium Capsules 20 Stuks 104 g",
+      "ingredients": [
+        "L'OR Espresso Lungo Profondo Aluminium Capsules 20 Stuks 104 g"
+      ],
+      "supermarket": null,
+      "price": 8.49,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/l-or-espresso-lungo-profondo-aluminium-capsules-20-stuks-104-g-191901DS",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "La Place Koffiebonen Dolce 1 kg",
+      "ingredients": [
+        "La Place Koffiebonen Dolce 1 kg"
+      ],
+      "supermarket": null,
+      "price": 18.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-dolce-1-kg-323849ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "La Place Koffiebonen Espresse Arabica 4 x 1000 g",
+      "ingredients": [
+        "La Place Koffiebonen Espresse Arabica 4 x 1000 g"
+      ],
+      "supermarket": null,
+      "price": 75.95,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-espresse-arabica-4-x-1000-g-323799DSL",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "La Place Koffiebonen Lungo Intenso 1 KG",
+      "ingredients": [
+        "La Place Koffiebonen Lungo Intenso 1 KG"
+      ],
+      "supermarket": null,
+      "price": 18.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-lungo-intenso-1-kg-444203ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "La Place Koffiebonen Lungo Originale 1KG",
+      "ingredients": [
+        "La Place Koffiebonen Lungo Originale 1KG"
+      ],
+      "supermarket": null,
+      "price": 18.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-lungo-originale-1kg-323798ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "La Place Koffiebonen Ristretto 1 kg",
+      "ingredients": [
+        "La Place Koffiebonen Ristretto 1 kg"
+      ],
+      "supermarket": null,
+      "price": 18.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-ristretto-1-kg-323839ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Lavazza Espresso Barista Intenso koffiebonen 500g",
+      "ingredients": [
+        "Lavazza Espresso Barista Intenso koffiebonen 500g"
+      ],
+      "supermarket": null,
+      "price": 15.79,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/lavazza-espresso-barista-intenso-koffiebonen-500g-539448ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Melitta CaféBar Selection Crema Intense Filterkoffie 250g",
+      "ingredients": [
+        "Melitta CaféBar Selection Crema Intense Filterkoffie 250g"
+      ],
+      "supermarket": null,
+      "price": 4.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/melitta-cafebar-selection-crema-intense-filterkoffie-250g-713195ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Melitta CaféBar Selection Espresso Classic Filterkoffie 250g",
+      "ingredients": [
+        "Melitta CaféBar Selection Espresso Classic Filterkoffie 250g"
+      ],
+      "supermarket": null,
+      "price": 4.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/melitta-cafebar-selection-espresso-classic-filterkoffie-250g-713199ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Melitta CaféBar Selection Espresso Intense Filterkoffie 250 g",
+      "ingredients": [
+        "Melitta CaféBar Selection Espresso Intense Filterkoffie 250 g"
+      ],
+      "supermarket": null,
+      "price": 4.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/melitta-cafebar-selection-espresso-intense-filterkoffie-250-g-713194ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Najjar Arabische Koffie 200g",
+      "ingredients": [
+        "Najjar Arabische Koffie 200g"
+      ],
+      "supermarket": null,
+      "price": 6.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/najjar-arabische-koffie-200g-705301ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Nescafé Cappuccino Koffiedrank 10 x 12,5 g",
+      "ingredients": [
+        "Nescafé Cappuccino Koffiedrank 10 x 12,5 g"
+      ],
+      "supermarket": null,
+      "price": 3.69,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/nescafe-cappuccino-koffiedrank-10-x-12,5-g-383945DS",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "NESCAFÉ Dolce Gusto, Koffie Grande , 3 x 16 capsules",
+      "ingredients": [
+        "NESCAFÉ Dolce Gusto, Koffie Grande , 3 x 16 capsules"
+      ],
+      "supermarket": null,
+      "price": 19.47,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/nescafe-dolce-gusto-koffie-grande-3-x-16-capsules-38991DSL",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Rood Snelfiltermaling 500 g",
+      "ingredients": [
+        "Rood Snelfiltermaling 500 g"
+      ],
+      "supermarket": null,
+      "price": 2.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/rood-snelfiltermaling-500-g-390414PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Segafredo Zanetti Intermezzo Roasted Coffee Beans 1000 g",
+      "ingredients": [
+        "Segafredo Zanetti Intermezzo Roasted Coffee Beans 1000 g"
+      ],
+      "supermarket": null,
+      "price": 19.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/segafredo-zanetti-intermezzo-roasted-coffee-beans-1000-g-140079PAK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Senseo Classic Koffiepads 54 Stuks Maxi Pack 375 g",
+      "ingredients": [
+        "Senseo Classic Koffiepads 54 Stuks Maxi Pack 375 g"
+      ],
+      "supermarket": null,
+      "price": 9.25,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/senseo-classic-koffiepads-54-stuks-maxi-pack-375-g-156549ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Starbucks® Pike Place Medium Roast koffiebonen 450 gram",
+      "ingredients": [
+        "Starbucks® Pike Place Medium Roast koffiebonen 450 gram"
+      ],
+      "supermarket": null,
+      "price": 13.99,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/starbucks-pike-place-medium-roast-koffiebonen-450-gram-422544ZK",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Zonnatura Bio Meergranen Koffie 100 g",
+      "ingredients": [
+        "Zonnatura Bio Meergranen Koffie 100 g"
+      ],
+      "supermarket": null,
+      "price": 3.69,
+      "discount": null,
+      "url": "https://www.jumbo.com/producten/zonnatura-bio-meergranen-koffie-100-g-149217POT",
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "savingsText": null,
+      "error": "Invalid URL"
+    }
+  ],
+  "count": 50,
+  "ingredientCount": 50,
+  "cachedAt": "2026-06-26 16:17:01"
+}
