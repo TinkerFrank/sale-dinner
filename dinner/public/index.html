@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sale Dinner — What's on sale tonight?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-badge">Shop smart · Cook easy</div>
+      <h1>Sale Dinner</h1>
+      <p class="hero-sub">Load this week's Jumbo deals, then get custom dinner recipes built around what's on sale — with audible step-by-step instructions.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel">
+        <div class="panel-head">
+          <h2>What's on sale?</h2>
+          <p>Load this week's deals from your Apify dataset, or enter items manually.</p>
+        </div>
+
+        <div class="fetch-row">
+          <button type="button" id="fetch-sales-btn" class="btn-secondary fetch-btn full-width">
+            ↓ Load sales from Apify
+          </button>
+        </div>
+        <p id="fetch-status" class="fetch-status" hidden></p>
+
+        <div id="savings-panel" class="savings-panel" hidden>
+          <h3>Sale savings</h3>
+          <p class="savings-note">Prices checked on each Jumbo product page. Amounts marked ~ are estimated from promo prices.</p>
+          <ul id="savings-list" class="savings-list"></ul>
+        </div>
+
+        <textarea
+          id="sale-items"
+          rows="10"
+          placeholder="chicken breast&#10;broccoli&#10;pasta&#10;garlic&#10;butter&#10;lemon"
+          aria-label="Sale items"
+        ></textarea>
+
+        <div class="sample-row">
+          <span class="sample-label">Try a sample:</span>
+          <button type="button" class="chip" data-sample="chicken breast, broccoli, garlic, butter, lemon">Chicken & veg</button>
+          <button type="button" class="chip" data-sample="ground beef, tortillas, lettuce, tomatoes, cheddar, onion">Taco night</button>
+          <button type="button" class="chip" data-sample="salmon, potatoes, asparagus, lemon, dill">Salmon sheet pan</button>
+        </div>
+
+        <button type="button" id="suggest-btn" class="btn-primary">
+          <span class="btn-icon">✦</span>
+          Find dinner ideas
+        </button>
+      </section>
+
+      <section class="panel results-panel" id="results-panel" hidden>
+        <div class="panel-head">
+          <h2>Suggested dinners</h2>
+          <p id="results-summary">Custom recipes using your sale items + pantry staples.</p>
+        </div>
+        <div id="recipe-cards" class="recipe-cards"></div>
+      </section>
+    </main>
+
+    <section class="panel recipe-detail" id="recipe-detail" hidden>
+      <button type="button" id="back-btn" class="back-btn" aria-label="Back to suggestions">← Back to suggestions</button>
+
+      <div class="detail-header">
+        <div>
+          <h2 id="detail-name"></h2>
+          <p id="detail-desc" class="detail-desc"></p>
+        </div>
+        <div class="detail-meta">
+          <span id="detail-time"></span>
+          <span id="detail-servings"></span>
+        </div>
+      </div>
+
+      <div class="audio-controls">
+        <label for="voice-select">Narrator voice</label>
+        <select id="voice-select" aria-label="ElevenLabs voice">
+          <option value="21m00Tcm4TlvDq8ikWAM">Rachel (default)</option>
+        </select>
+        <button type="button" id="play-all-btn" class="btn-secondary">▶ Play all steps</button>
+        <button type="button" id="stop-btn" class="btn-ghost" hidden>■ Stop</button>
+      </div>
+
+      <div class="recipe-savings-box" id="recipe-savings-box" hidden>
+        <div class="recipe-savings-head">
+          <h3>Total savings</h3>
+          <p id="detail-total-savings" class="detail-total-savings"></p>
+        </div>
+        <ul id="detail-deal-savings" class="deal-savings-list"></ul>
+        <p id="detail-savings-note" class="savings-note" hidden>~ = estimated from promo price (e.g. “voor €1,19”)</p>
+      </div>
+
+      <div class="matched-box">
+        <h3>On sale (from your flyer)</h3>
+        <ul id="detail-sale-items" class="tag-list tag-sale"></ul>
+      </div>
+
+      <div class="matched-box pantry-box">
+        <h3>Pantry staples</h3>
+        <ul id="detail-pantry" class="tag-list tag-pantry"></ul>
+      </div>
+
+      <ol id="steps-list" class="steps-list"></ol>
+    </section>
+
+    <footer class="footer">
+      <p>Audio by <strong>ElevenLabs</strong> · Sales via <strong>Apify</strong> (Flipp flyers)</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
