@@ -58,12 +58,39 @@ let voiceListenActive = false;
 const NEXT_STEP_PHRASES = [
   "next", "done", "ready", "finished", "finish", "continue", "ok", "okay",
   "got it", "all set", "next step", "move on", "go on", "complete", "yes",
-  "klaar", "volgende", "oke", "oké", "klaar met", "verder",
+  "klaar", "volgende", "oke", "oké", "klaar met", "verder", "volgende stap",
+  "ga verder", "ik ben klaar", "fertig", "weiter",
 ];
 
+function normalizeTranscript(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s']/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function matchesNextCommand(transcript) {
-  const text = String(transcript || "").toLowerCase().trim();
-  return NEXT_STEP_PHRASES.some((phrase) => text.includes(phrase));
+  const text = normalizeTranscript(transcript);
+  if (!text) return false;
+  const words = text.split(" ");
+  return NEXT_STEP_PHRASES.some((phrase) => {
+    const p = normalizeTranscript(phrase);
+    return text === p || text.includes(p) || words.includes(p);
+  });
+}
+
+async function ensureMicrophoneReady() {
+  if (!SpeechRecognition) return false;
+  if (!navigator.mediaDevices?.getUserMedia) return true;
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    stream.getTracks().forEach((track) => track.stop());
+    return true;
+  } catch (error) {
+    console.warn("Microphone permission:", error);
+    return false;
+  }
 }
 
 function setVoiceListenUI(active) {
@@ -99,21 +126,26 @@ function startVoiceListen(onMatch) {
 
   speechRecognizer = new SpeechRecognition();
   speechRecognizer.continuous = true;
-  speechRecognizer.interimResults = false;
-  speechRecognizer.lang = navigator.language || "en-US";
+  speechRecognizer.interimResults = true;
+  speechRecognizer.lang = navigator.language?.startsWith("nl") ? "nl-NL" : "en-US";
+  speechRecognizer.maxAlternatives = 3;
   voiceListenActive = true;
   setVoiceListenUI(true);
 
   speechRecognizer.onresult = (event) => {
     if (!voiceListenActive) return;
     for (let i = event.resultIndex; i < event.results.length; i++) {
-      if (!event.results[i].isFinal) continue;
-      const heard = event.results[i][0].transcript;
-      if (matchesNextCommand(heard)) {
-        stopVoiceListen();
-        showToast(`Heard: "${heard.trim()}"`);
-        onMatch(heard);
-        return;
+      const result = event.results[i];
+      const heard = result[0]?.transcript || "";
+      if (!heard.trim()) continue;
+
+      if (result.isFinal || matchesNextCommand(heard)) {
+        if (matchesNextCommand(heard)) {
+          stopVoiceListen();
+          showToast(`Heard: "${heard.trim()}"`);
+          onMatch(heard);
+          return;
+        }
       }
     }
   };
@@ -121,7 +153,7 @@ function startVoiceListen(onMatch) {
   speechRecognizer.onerror = (event) => {
     if (event.error === "aborted" || event.error === "no-speech") return;
     console.warn("Speech recognition:", event.error);
-    if (event.error === "not-allowed") {
+    if (event.error === "not-allowed" || event.error === "service-not-allowed") {
       stopVoiceListen();
       updateAssistantCaption("Microphone blocked — tap the button below to continue.");
       if (stepConfirmBtn) stepConfirmBtn.hidden = false;
@@ -129,18 +161,15 @@ function startVoiceListen(onMatch) {
   };
 
   speechRecognizer.onend = () => {
-    if (voiceListenActive && stepConfirmResolver) {
+    if (!voiceListenActive) return;
+    setTimeout(() => {
+      if (!voiceListenActive || !speechRecognizer) return;
       try {
         speechRecognizer.start();
       } catch {
-        /* restart on next tick */
-        setTimeout(() => {
-          if (voiceListenActive && speechRecognizer) {
-            try { speechRecognizer.start(); } catch { /* ignore */ }
-          }
-        }, 300);
+        /* recognition will retry on next onend */
       }
-    }
+    }, 250);
   };
 
   try {
@@ -204,26 +233,32 @@ function waitForStepConfirm(stepIndex, total) {
     setAssistantState("waiting");
     showCurrentStep(stepIndex, currentRecipe.steps[stepIndex], total);
 
-    const voiceStarted = startVoiceListen(() => resolveStepConfirm(true));
-
-    if (voiceStarted) {
-      updateAssistantCaption('Say "next" or "done" when you finish this step.');
-      if (stepConfirmBtn) stepConfirmBtn.hidden = true;
-    } else {
-      updateAssistantCaption("Voice unavailable — tap the button when you've finished this step.");
-      if (stepConfirmBtn) {
-        stepConfirmBtn.hidden = false;
-        stepConfirmBtn.textContent =
-          stepIndex < total - 1 ? "Done — next step" : "Finish cook-along";
-      }
-    }
-
     stepConfirmResolver = (confirmed) => {
       stopVoiceListen();
       stepConfirmResolver = null;
       if (stepConfirmBtn) stepConfirmBtn.hidden = true;
       resolve(confirmed);
     };
+
+    if (stepConfirmBtn) {
+      stepConfirmBtn.hidden = false;
+      stepConfirmBtn.textContent =
+        stepIndex < total - 1 ? "Done — next step" : "Finish cook-along";
+    }
+
+    const beginListening = () => {
+      if (playAllAbort || !stepConfirmResolver) return;
+
+      const voiceStarted = startVoiceListen(() => resolveStepConfirm(true));
+      if (voiceStarted) {
+        updateAssistantCaption('Say "next" or "done" when you finish this step.');
+      } else {
+        updateAssistantCaption("Voice unavailable — tap the button when you've finished this step.");
+      }
+    };
+
+    // Pause after TTS so the microphone is not competing with speaker output.
+    setTimeout(beginListening, 400);
   });
 }
 
@@ -445,6 +480,7 @@ async function speakStep(stepIndex, stepText) {
     await playAudioBlob(blob);
     if (playAllAbort) return;
 
+    await ensureMicrophoneReady();
     const confirmed = await waitForStepConfirm(stepIndex, total);
     if (!confirmed || playAllAbort) return;
 
@@ -477,6 +513,11 @@ async function speakStep(stepIndex, stepText) {
 
 async function playAllSteps() {
   if (!currentRecipe) return;
+
+  const micReady = await ensureMicrophoneReady();
+  if (!micReady && SpeechRecognition) {
+    showToast("Allow microphone access for hands-free “next” commands");
+  }
 
   playAllAbort = false;
   playAllRunning = true;
@@ -808,7 +849,7 @@ async function loadSalesFromApi({ silent = false } = {}) {
   fetchStatus.className = "status-text loading";
   fetchStatus.textContent = silent
     ? "Loading demo Jumbo deals…"
-    : "Loading Apify deals and checking Jumbo pages for savings…";
+    : "Loading Jumbo sales from Apify (Dutch Supermarkets actor)…";
   savingsPanel.hidden = true;
 
   try {

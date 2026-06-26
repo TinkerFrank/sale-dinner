@@ -34,6 +34,7 @@ load_env()
 ELEVENLABS_API_KEY = os.environ.get("ELEVENLABS_API_KEY", "")
 APIFY_TOKEN = os.environ.get("APIFY_TOKEN", "")
 APIFY_DATASET_ID = os.environ.get("APIFY_DATASET_ID", "")
+APIFY_ACTOR_ID = os.environ.get("APIFY_ACTOR_ID", "harvestedge~dutch-supermarkets-all-11")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
 
@@ -64,7 +65,7 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(200, {
                 "ok": True,
                 "elevenlabsConfigured": bool(ELEVENLABS_API_KEY),
-                "apifyConfigured": bool(APIFY_TOKEN and APIFY_DATASET_ID),
+                "apifyConfigured": bool(APIFY_TOKEN),
                 "llmConfigured": bool(OPENAI_API_KEY),
             })
 
@@ -109,7 +110,7 @@ class Handler(SimpleHTTPRequestHandler):
         except json.JSONDecodeError:
             body = {}
 
-        if not APIFY_TOKEN or not APIFY_DATASET_ID:
+        if not APIFY_TOKEN:
             from fake_sales import build_fake_sales_response
             return self.send_json(200, build_fake_sales_response())
 
@@ -117,8 +118,10 @@ class Handler(SimpleHTTPRequestHandler):
             result = fetch_local_sales(
                 APIFY_TOKEN,
                 postal_code=(body.get("postalCode") or "").strip(),
-                dataset_id=APIFY_DATASET_ID,
+                dataset_id=APIFY_DATASET_ID or None,
                 enrich_savings=bool(body.get("enrichSavings", True)),
+                actor_id=APIFY_ACTOR_ID,
+                start_new_run=bool(body.get("startNewRun", False)),
             )
             self.send_json(200, result)
         except ValueError as error:
@@ -216,8 +219,8 @@ def main():
     print(f"Sale Dinner Suggest running at http://localhost:{PORT}")
     if not ELEVENLABS_API_KEY:
         print("Warning: ELEVENLABS_API_KEY is not set. Audio will not work.")
-    if not APIFY_TOKEN or not APIFY_DATASET_ID:
-        print("Warning: APIFY_TOKEN or APIFY_DATASET_ID is not set. Sale fetching will not work.")
+    if not APIFY_TOKEN:
+        print("Warning: APIFY_TOKEN is not set. Sale fetching will use demo data.")
     if not OPENAI_API_KEY:
         print("Warning: OPENAI_API_KEY is not set. Using rule-based recipe generator.")
     try:
