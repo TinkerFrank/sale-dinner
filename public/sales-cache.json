@@ -1,474 +1,1091 @@
 {
-  "source": "apify-dataset",
-  "datasetId": "x0n4KTSeG4tdpnttJ",
-  "supermarket": null,
+  "source": "apify-actor-run",
+  "datasetId": "v3ErmXXiggiPfx2UC",
+  "supermarket": "Jumbo",
   "saleItems": [
-    "Melitta CaféBar Selection Espresso Intense Filterkoffie 250 g",
-    "Jumbo's Beste Koffie Snelfiltermaling Aroma 2 x 500 g",
-    "Melitta CaféBar Selection Espresso Classic Filterkoffie 250g",
-    "Jumbo's Beste Koffie Snelfiltermaling Aroma 500 g",
-    "Jumbo's roodmerk filterkoffie 6 x 2 x 500g",
-    "Melitta CaféBar Selection Crema Intense Filterkoffie 250g",
-    "Jumbo's Beste Koffie Snelfiltermaling Decaf 500 g",
-    "Douwe Egberts Aroma Rood Dubbelpak Filterkoffie 2 x 500 g",
-    "Douwe Egberts Aroma Rood Filterkoffie 500 g",
-    "Rood Snelfiltermaling 500 g",
-    "Jumbo's Beste Koffiebonen Dark Roast 1 kg",
-    "Jumbo's Beste Koffiebonen Aroma 1 kg",
-    "La Place Koffiebonen Espresse Arabica 4 x 1000 g",
-    "Jumbo's Beste Koffiebonen Espresso 4 x 1 kg",
-    "La Place Koffiebonen Lungo Originale 1KG",
-    "Jumbo's Lungo Intenso Koffiecups 40 Stuks",
-    "L'OR Espresso Lungo Profondo Aluminium Capsules 20 Stuks 104 g",
-    "Café Royal Vanilla 10 Capsules 50 g",
-    "Café Royal Caramel 10 Capsules 50 g",
-    "Nescafé Cappuccino Koffiedrank 10 x 12,5 g",
-    "Café Royal Dark Chocolate Flavoured Coffee 10 Capsules 50 g",
-    "Jumbo's Beste Koffie Grove Filtermaling Aroma 500 g",
-    "Jumbo's Beste Koffie Snelfiltermaling Biologisch 500 g",
-    "Jumbo's Beste Koffie Snelfiltermaling Goud 500 g",
-    "Jumbo's Beste Koffie Snelfiltermaling Dark Roast 500 g",
-    "Jumbo's Beste Koffie Snelfiltermaling Aroma 250 g",
-    "Gala Koffie Mild Aroma 500 g",
-    "Zonnatura Bio Meergranen Koffie 100 g",
-    "Jumbo's Beste Biologische Koffie Snelfiltermaling 250 g",
-    "NESCAFÉ Dolce Gusto, Koffie Grande , 3 x 16 capsules",
-    "Jumbo's Witte Chocolade Koffie Speculoos 140 g",
-    "Najjar Arabische Koffie 200g",
-    "Jumbo's Beste Koffie Snelfiltermaling Mild 250 g",
+    "Heineken Premium Pilsener Bier Fles Krat 24 x 300ml",
+    "tomatoes",
+    "Coca-Cola Zero Sugar 5+1 Gratis 6 x 1,5 L",
+    "strawberries",
+    "Coca-Cola Original Taste 5+1 Gratis PET Fles 6 x 1,5 L",
+    "apples",
+    "broccoli",
+    "avocado",
     "Jumbo's Koffiepads Classic 56 Stuks",
-    "Jumbo's beste koffiebonen aroma 4 x 1kg",
-    "Jumbo's Beste Koffiebonen Espresso 1 kg",
-    "La Place Koffiebonen Ristretto 1 kg",
+    "Hertog Jan - Pilsener - Tray - 24 x 330ML",
+    "Jumbo Galia Meloen",
+    "Coca-Cola Zero Sugar 10+2 Gratis 12 x 250 ml",
+    "Jumbo Zoete Puntpaprika 500 g",
+    "Lipton Ice Tea Green 24 x 250 ml",
+    "Coca-Cola Original Taste 10+2 Gratis 12 x 250 ml",
+    "Optimel Drinkyoghurt Framboos 0% Vet 1L",
+    "Montaignan - Chardonnay - 750ML",
+    "Jumbo Mini Watermeloen 1 Stuk",
+    "Tre Filari - Primitivo - 750ML",
+    "Jumbo El Salade 200 g",
+    "Optimel Drinkyoghurt Mango Passievrucht 0% Vet 1L",
+    "chicken",
+    "Jumbo Houmous Naturel 200 g",
+    "Jumbo Varkenshaas Culinair 1 Stuk ca. 375 g",
+    "Rivella Original 1,5 L",
+    "Jumbo Zalmfilet met Huid Naturel ca. 360 g",
     "Starbucks® Pike Place Medium Roast koffiebonen 450 gram",
-    "Jumbo Creamer voor Koffie 400 g",
-    "La Place Koffiebonen Dolce 1 kg",
-    "Segafredo Zanetti Intermezzo Roasted Coffee Beans 1000 g",
-    "La Place Koffiebonen Lungo Intenso 1 KG",
-    "Jumbo Creamer voor Koffie 350 g",
-    "Jumbo's Koffiecups 08 Espresso Superlativo 40 Stuks",
-    "Senseo Classic Koffiepads 54 Stuks Maxi Pack 375 g",
+    "Jumbo Tonijnsalade 200 g",
+    "Jumbo Kipsaté Salade 200 g",
+    "Heineken Premium Pilsener Bier Blik 24 x 330ml Tray",
+    "Jumbo Cantaloupe Meloen 1 Stuks",
+    "Ben & Jerry's IJs Cookie Dough 465 ml",
+    "salmon",
+    "Heinz Tomaten Ketchup 400ml",
+    "Prodent Tandpasta Cool Mint 75 ml",
+    "cheese",
+    "Neutral Vloeibaar Wasmiddel Wit 6 x 20 wasbeurten",
+    "Robijn Klein & Krachtig Wasmiddel Kleur 1,19L",
+    "Westland Rundvleessalade Voordeelverpakking 560 g",
+    "Ariel 4in1 PODS Unstoppables Color, Wasmiddelcapsules 26",
     "Jumbo's Koffiepads Classic 36 Stuks",
-    "Lavazza Espresso Barista Intenso koffiebonen 500g",
+    "pasta",
+    "Campina Zacht en Luchtig Framboos Smaak 1 L",
+    "Vida Barcelona - Sparkling 0,0% Alcoholvrij 750ML",
     "Jumbo's Koffiepads Decaf 36 Stuks",
-    "Jumbo Aroma Oploskoffie 200 g",
-    "beans"
+    "Optimel Drinkyoghurt Limoen 0% Vet 1L",
+    "SPA INTENSE Bruisend Natuurlijk Mineraalwater 6x1,5L",
+    "cream",
+    "Lipton Sparkling Blik 24x250ML",
+    "Jumbo Gekookte Kipreepjes 2 x 100 g",
+    "Coca-Cola Zero Sugar 12 x 330 ml",
+    "Campina Vla Limited Edition 1L",
+    "Chocomel 0% Suiker Toegevoegd 1 L",
+    "Kroon Saksische Smeerleverworst 150 g",
+    "Campina Zacht en Luchtig Vanille Smaak 1 L",
+    "Optimel Vezels Drinkyoghurt Mango Ananas 0% Vet 1L",
+    "pork",
+    "Wasa Volkoren 260 g",
+    "Jumbo's Koffiepads Extra Dark 56 Stuks",
+    "Glorix Bleek Eucalyptus 750 ml",
+    "Calvé Saus Whisky Cocktail 320 ml",
+    "Tiempo & Tierra - Verdejo - 750ML",
+    "Jumbo's Koffiepads Dark Roast 56 Stuks",
+    "Jumbo Cocktail Tros Tomaten 400 g",
+    "Jumbo Surimi met Krab Salade 200 g",
+    "Campina Zacht en Luchtig Banaan Smaak 1 L",
+    "bell pepper",
+    "Coca-Cola Light 5+1 Gratis PET Fles 6 x 1,5 L",
+    "Jumbo Ananas 250 g",
+    "Ben & Jerry's IJs Chocolate Fudge Brownie 465ml",
+    "garlic",
+    "Jumbo Gevuld Ei Salade 200 g",
+    "peaches",
+    "Honig Maaltijdmix voor Nasi Speciaal 39 g",
+    "Optimel Vezels Drinkyoghurt Framboos Bosbes 0% Vet 1L",
+    "spinach",
+    "Lindahls Protein Kvarg Stracciatella 450 g",
+    "Apple Bandit Classic Apple Cider Fles 6 x 300ml"
   ],
   "deals": [
     {
-      "name": "Café Royal Caramel 10 Capsules 50 g",
+      "name": "Apple Bandit Classic Apple Cider Fles 6 x 300ml",
       "ingredients": [
-        "Café Royal Caramel 10 Capsules 50 g"
+        "Apple Bandit Classic Apple Cider Fles 6 x 300ml"
       ],
-      "supermarket": null,
-      "price": 4.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/cafe-royal-caramel-10-capsules-50-g-233324STK",
+      "supermarket": "Jumbo",
+      "price": 5.76,
+      "discount": "25% korting",
+      "url": "https://www.jumbo.com/producten/apple-bandit-classic-apple-cider-fles-6-x-300ml-198151PAK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Café Royal Dark Chocolate Flavoured Coffee 10 Capsules 50 g",
+      "name": "Ariel 4in1 PODS Unstoppables Color, Wasmiddelcapsules 26",
       "ingredients": [
-        "Café Royal Dark Chocolate Flavoured Coffee 10 Capsules 50 g"
+        "Ariel 4in1 PODS Unstoppables Color, Wasmiddelcapsules 26"
       ],
-      "supermarket": null,
-      "price": 4.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/cafe-royal-dark-chocolate-flavoured-coffee-10-capsules-50-g-424853PAK",
+      "supermarket": "Jumbo",
+      "price": 27.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/ariel-4in1-pods-unstoppables-color-wasmiddelcapsules-26-669614DS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Café Royal Vanilla 10 Capsules 50 g",
+      "name": "Ben & Jerry's IJs Chocolate Fudge Brownie 465ml",
       "ingredients": [
-        "Café Royal Vanilla 10 Capsules 50 g"
+        "Ben & Jerry's IJs Chocolate Fudge Brownie 465ml"
       ],
-      "supermarket": null,
-      "price": 4.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/cafe-royal-vanilla-10-capsules-50-g-233326STK",
+      "supermarket": "Jumbo",
+      "price": 7.79,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/ben-jerry-s-ijs-chocolate-fudge-brownie-465ml-486573CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Douwe Egberts Aroma Rood Dubbelpak Filterkoffie 2 x 500 g",
+      "name": "Ben & Jerry's IJs Cookie Dough 465 ml",
       "ingredients": [
-        "Douwe Egberts Aroma Rood Dubbelpak Filterkoffie 2 x 500 g"
+        "Ben & Jerry's IJs Cookie Dough 465 ml"
       ],
-      "supermarket": null,
-      "price": 19.79,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/douwe-egberts-aroma-rood-dubbelpak-filterkoffie-2-x-500-g-149986PAK",
+      "supermarket": "Jumbo",
+      "price": 7.79,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/ben-jerry-s-ijs-cookie-dough-465-ml-486571CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Douwe Egberts Aroma Rood Filterkoffie 500 g",
+      "name": "Calvé Saus Knoflook 320 ml",
       "ingredients": [
-        "Douwe Egberts Aroma Rood Filterkoffie 500 g"
+        "garlic"
       ],
-      "supermarket": null,
-      "price": 9.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/douwe-egberts-aroma-rood-filterkoffie-500-g-220752PAK",
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/calve-saus-knoflook-320-ml-73299FLS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Douwe Egberts Espresso Bonen Voordeelpak 1000 g",
+      "name": "Calvé Saus Whisky Cocktail 320 ml",
       "ingredients": [
-        "beans"
+        "Calvé Saus Whisky Cocktail 320 ml"
       ],
-      "supermarket": null,
-      "price": 21.79,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/douwe-egberts-espresso-bonen-voordeelpak-1000-g-390430ZK",
+      "supermarket": "Jumbo",
+      "price": 2.55,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/calve-saus-whisky-cocktail-320-ml-73298FLS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Gala Koffie Mild Aroma 500 g",
+      "name": "Campina Magere Yoghurt 1 L",
       "ingredients": [
-        "Gala Koffie Mild Aroma 500 g"
+        "cheese"
       ],
-      "supermarket": null,
-      "price": 5.69,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/gala-koffie-mild-aroma-500-g-671690ZK",
+      "supermarket": "Jumbo",
+      "price": 1.69,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/campina-magere-yoghurt-1-l-527014PAK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo Aroma Oploskoffie 200 g",
+      "name": "Campina Milde Halfvolle Yoghurt 1 L",
       "ingredients": [
-        "Jumbo Aroma Oploskoffie 200 g"
+        "cheese"
       ],
-      "supermarket": null,
-      "price": 5.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-aroma-oploskoffie-200-g-319462POT",
+      "supermarket": "Jumbo",
+      "price": 1.89,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/campina-milde-halfvolle-yoghurt-1-l-31677PAK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo Creamer voor Koffie 350 g",
+      "name": "Campina Vla Limited Edition 1L",
       "ingredients": [
-        "Jumbo Creamer voor Koffie 350 g"
+        "Campina Vla Limited Edition 1L"
       ],
-      "supermarket": null,
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "Bij aankoop van 3 pakken, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/campina-vla-limited-edition-1l-673390PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Campina Vla Slagroom Vanillesmaak 1 L",
+      "ingredients": [
+        "cream"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "Bij aankoop van 3 pakken, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/campina-vla-slagroom-vanillesmaak-1-l-527089PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Campina Vlaflip Halfvolle Yoghurt en Vla Vanillesmaak met Rode Vruchtensaus 1 L",
+      "ingredients": [
+        "cheese"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "Bij aankoop van 3 pakken, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/campina-vlaflip-halfvolle-yoghurt-en-vla-vanillesmaak-met-rode-vruchtensaus-1-l-188332PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Campina Volle Yoghurt 1 L",
+      "ingredients": [
+        "cheese"
+      ],
+      "supermarket": "Jumbo",
+      "price": 1.95,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/campina-volle-yoghurt-1-l-526937PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Campina Zacht en Luchtig Banaan Smaak 1 L",
+      "ingredients": [
+        "Campina Zacht en Luchtig Banaan Smaak 1 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "Bij aankoop van 3 pakken, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/campina-zacht-en-luchtig-banaan-smaak-1-l-527058PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Campina Zacht en Luchtig Framboos Smaak 1 L",
+      "ingredients": [
+        "Campina Zacht en Luchtig Framboos Smaak 1 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "Bij aankoop van 3 pakken, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/campina-zacht-en-luchtig-framboos-smaak-1-l-527059PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Campina Zacht en Luchtig Vanille Smaak 1 L",
+      "ingredients": [
+        "Campina Zacht en Luchtig Vanille Smaak 1 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "Bij aankoop van 3 pakken, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/campina-zacht-en-luchtig-vanille-smaak-1-l-527060PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Chocomel 0% Suiker Toegevoegd 1 L",
+      "ingredients": [
+        "Chocomel 0% Suiker Toegevoegd 1 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.69,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/chocomel-0-suiker-toegevoegd-1-l-203654PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Coca-Cola Light 5+1 Gratis PET Fles 6 x 1,5 L",
+      "ingredients": [
+        "Coca-Cola Light 5+1 Gratis PET Fles 6 x 1,5 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 12.45,
+      "discount": "5+1 gratis",
+      "url": "https://www.jumbo.com/producten/coca-cola-light-51-gratis-pet-fles-6-x-1,5-l-712418PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Coca-Cola Original Taste 10+2 Gratis 12 x 250 ml",
+      "ingredients": [
+        "Coca-Cola Original Taste 10+2 Gratis 12 x 250 ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 6.99,
+      "discount": "10+2 gratis",
+      "url": "https://www.jumbo.com/producten/coca-cola-original-taste-102-gratis-12-x-250-ml-534893PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Coca-Cola Original Taste 5+1 Gratis PET Fles 6 x 1,5 L",
+      "ingredients": [
+        "Coca-Cola Original Taste 5+1 Gratis PET Fles 6 x 1,5 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 12.45,
+      "discount": "5+1 gratis",
+      "url": "https://www.jumbo.com/producten/coca-cola-original-taste-51-gratis-pet-fles-6-x-1,5-l-712417PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Coca-Cola Zero Sugar 10+2 Gratis 12 x 250 ml",
+      "ingredients": [
+        "Coca-Cola Zero Sugar 10+2 Gratis 12 x 250 ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 6.5,
+      "discount": "10+2 gratis",
+      "url": "https://www.jumbo.com/producten/coca-cola-zero-sugar-102-gratis-12-x-250-ml-533214PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Coca-Cola Zero Sugar 12 x 330 ml",
+      "ingredients": [
+        "Coca-Cola Zero Sugar 12 x 330 ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 7.49,
+      "discount": "voor 7,49 (was €9.39)",
+      "url": "https://www.jumbo.com/producten/coca-cola-zero-sugar-12-x-330-ml-533218PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Coca-Cola Zero Sugar 5+1 Gratis 6 x 1,5 L",
+      "ingredients": [
+        "Coca-Cola Zero Sugar 5+1 Gratis 6 x 1,5 L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 12.45,
+      "discount": "5+1 gratis",
+      "url": "https://www.jumbo.com/producten/coca-cola-zero-sugar-51-gratis-6-x-1,5-l-712419PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Danio Romige Kwark Perzik 450 g",
+      "ingredients": [
+        "cheese",
+        "peaches"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.89,
+      "discount": "2 voor 4,00",
+      "url": "https://www.jumbo.com/producten/danio-romige-kwark-perzik-450-g-692581BKR",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "DubbelFrisss Appel - Perzik 1,5 L",
+      "ingredients": [
+        "apples",
+        "peaches"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.89,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/dubbelfrisss-appel-perzik-1,5-l-498380PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Glorix Bleek Eucalyptus 750 ml",
+      "ingredients": [
+        "Glorix Bleek Eucalyptus 750 ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "3 voor 5,00",
+      "url": "https://www.jumbo.com/producten/glorix-bleek-eucalyptus-750-ml-554581FLS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Heineken Premium Pilsener Bier Blik 24 x 330ml Tray",
+      "ingredients": [
+        "Heineken Premium Pilsener Bier Blik 24 x 330ml Tray"
+      ],
+      "supermarket": "Jumbo",
+      "price": 19.99,
+      "discount": "Alleen online, voor 19,99 (was €26.33)",
+      "url": "https://www.jumbo.com/producten/heineken-premium-pilsener-bier-blik-24-x-330ml-tray-539042DS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Heineken Premium Pilsener Bier Fles Krat 24 x 300ml",
+      "ingredients": [
+        "Heineken Premium Pilsener Bier Fles Krat 24 x 300ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 14.99,
+      "discount": "25% korting",
+      "url": "https://www.jumbo.com/producten/heineken-premium-pilsener-bier-fles-krat-24-x-300ml-87441KRT",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Heinz Tomaten Ketchup 400ml",
+      "ingredients": [
+        "Heinz Tomaten Ketchup 400ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.89,
+      "discount": "Bij aankoop van 3 stuks, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/heinz-tomaten-ketchup-400ml-578834FLS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Hertog Jan - Pilsener - Tray - 24 x 330ML",
+      "ingredients": [
+        "Hertog Jan - Pilsener - Tray - 24 x 330ML"
+      ],
+      "supermarket": "Jumbo",
+      "price": 23.99,
+      "discount": "Alleen online, voor 23,99 (was €27.68)",
+      "url": "https://www.jumbo.com/producten/hertog-jan-pilsener-tray-24-x-330ml-535695TRA",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Honig Maaltijdmix voor Macaroni en Spaghetti 41 g",
+      "ingredients": [
+        "pasta"
+      ],
+      "supermarket": "Jumbo",
+      "price": 1.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/honig-maaltijdmix-voor-macaroni-en-spaghetti-41-g-528661DS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Honig Maaltijdmix voor Nasi Speciaal 39 g",
+      "ingredients": [
+        "Honig Maaltijdmix voor Nasi Speciaal 39 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 1.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/honig-maaltijdmix-voor-nasi-speciaal-39-g-528658DS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Aardbeien Hollands 400 g",
+      "ingredients": [
+        "strawberries"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "voor 2,99 (was €4.99)",
+      "url": "https://www.jumbo.com/producten/jumbo-aardbeien-hollands-400-g-306021BAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Ananas 250 g",
+      "ingredients": [
+        "Jumbo Ananas 250 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.79,
+      "discount": "2 voor 3,99",
+      "url": "https://www.jumbo.com/producten/jumbo-ananas-250-g-618422DS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Avocado Eetrijp 2 Stuks",
+      "ingredients": [
+        "avocado"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "voor 2,49 (was €2.99)",
+      "url": "https://www.jumbo.com/producten/jumbo-avocado-eetrijp-2-stuks-697253STK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Baby Spinazie 100 g",
+      "ingredients": [
+        "spinach"
+      ],
+      "supermarket": "Jumbo",
       "price": 1.39,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-creamer-voor-koffie-350-g-394272BAK",
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-baby-spinazie-100-g-362303ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo Creamer voor Koffie 400 g",
+      "name": "Jumbo Beenham Salade 200 g",
       "ingredients": [
-        "Jumbo Creamer voor Koffie 400 g"
+        "pork"
       ],
-      "supermarket": null,
-      "price": 1.59,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-creamer-voor-koffie-400-g-394274POT",
+      "supermarket": "Jumbo",
+      "price": 2.69,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-beenham-salade-200-g-522937CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Biologische Koffie Snelfiltermaling 250 g",
+      "name": "Jumbo Broccoli 500 g",
       "ingredients": [
-        "Jumbo's Beste Biologische Koffie Snelfiltermaling 250 g"
+        "broccoli"
       ],
-      "supermarket": null,
-      "price": 4.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-biologische-koffie-snelfiltermaling-250-g-722922ZK",
+      "supermarket": "Jumbo",
+      "price": 1.19,
+      "discount": "Alleen online, voor 1,19 (was €1.35)",
+      "url": "https://www.jumbo.com/producten/jumbo-broccoli-500-g-479521STK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Grove Filtermaling Aroma 500 g",
+      "name": "Jumbo Cantaloupe Meloen 1 Stuks",
       "ingredients": [
-        "Jumbo's Beste Koffie Grove Filtermaling Aroma 500 g"
+        "Jumbo Cantaloupe Meloen 1 Stuks"
       ],
-      "supermarket": null,
-      "price": 7.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-grove-filtermaling-aroma-500-g-637314STK",
+      "supermarket": "Jumbo",
+      "price": 2.16,
+      "discount": "25% korting",
+      "url": "https://www.jumbo.com/producten/jumbo-cantaloupe-meloen-1-stuks-40491STK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Aroma 2 x 500 g",
+      "name": "Jumbo Cocktail Tros Tomaten 400 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Aroma 2 x 500 g"
+        "Jumbo Cocktail Tros Tomaten 400 g"
       ],
-      "supermarket": null,
-      "price": 15.18,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-aroma-2-x-500-g-638307PAK",
+      "supermarket": "Jumbo",
+      "price": 1.99,
+      "discount": "voor 1,99 (was €2.99)",
+      "url": "https://www.jumbo.com/producten/jumbo-cocktail-tros-tomaten-400-g-528413STK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Aroma 250 g",
+      "name": "Jumbo Drumsticks Gekruid Kip ca. 1000 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Aroma 250 g"
+        "chicken"
       ],
-      "supermarket": null,
-      "price": 4.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-aroma-250-g-637243STK",
+      "supermarket": "Jumbo",
+      "price": 5,
+      "discount": "5,00 per kilo",
+      "url": "https://www.jumbo.com/producten/jumbo-drumsticks-gekruid-kip-ca-1000-g-515088KGR",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Aroma 500 g",
+      "name": "Jumbo El Salade 200 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Aroma 500 g"
+        "Jumbo El Salade 200 g"
       ],
-      "supermarket": null,
-      "price": 7.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-aroma-500-g-637315PAK",
+      "supermarket": "Jumbo",
+      "price": 2.59,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-el-salade-200-g-522934DS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Biologisch 500 g",
+      "name": "Jumbo Galia Meloen",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Biologisch 500 g"
+        "Jumbo Galia Meloen"
       ],
-      "supermarket": null,
-      "price": 8.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-biologisch-500-g-722784ZK",
+      "supermarket": "Jumbo",
+      "price": 2.16,
+      "discount": "25% korting",
+      "url": "https://www.jumbo.com/producten/jumbo-galia-meloen-45946STK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Dark Roast 500 g",
+      "name": "Jumbo Gekookte Kipreepjes 2 x 100 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Dark Roast 500 g"
+        "Jumbo Gekookte Kipreepjes 2 x 100 g"
       ],
-      "supermarket": null,
-      "price": 7.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-dark-roast-500-g-637312STK",
+      "supermarket": "Jumbo",
+      "price": 3.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-gekookte-kipreepjes-2-x-100-g-694129ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Decaf 500 g",
+      "name": "Jumbo Gevuld Ei Salade 200 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Decaf 500 g"
+        "Jumbo Gevuld Ei Salade 200 g"
       ],
-      "supermarket": null,
-      "price": 8.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-decaf-500-g-637311PAK",
+      "supermarket": "Jumbo",
+      "price": 2.69,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-gevuld-ei-salade-200-g-522950CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Goud 500 g",
+      "name": "Jumbo Houmous Naturel 200 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Goud 500 g"
+        "Jumbo Houmous Naturel 200 g"
       ],
-      "supermarket": null,
-      "price": 7.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-goud-500-g-637313STK",
+      "supermarket": "Jumbo",
+      "price": 1.29,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-houmous-naturel-200-g-426812CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffie Snelfiltermaling Mild 250 g",
+      "name": "Jumbo Houmous Zongedroogde Tomaat 200 g",
       "ingredients": [
-        "Jumbo's Beste Koffie Snelfiltermaling Mild 250 g"
+        "tomatoes"
       ],
-      "supermarket": null,
-      "price": 4.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffie-snelfiltermaling-mild-250-g-637245STK",
+      "supermarket": "Jumbo",
+      "price": 1.39,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-houmous-zongedroogde-tomaat-200-g-426819CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffiebonen Aroma 1 kg",
+      "name": "Jumbo Kip Drumsticks ca. 1 Kg",
       "ingredients": [
-        "Jumbo's Beste Koffiebonen Aroma 1 kg"
+        "chicken"
       ],
-      "supermarket": null,
-      "price": 15.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-aroma-1-kg-637316ZK",
+      "supermarket": "Jumbo",
+      "price": 5.25,
+      "discount": "5,00 per kilo",
+      "url": "https://www.jumbo.com/producten/jumbo-kip-drumsticks-ca-1-kg-596715KGR",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's beste koffiebonen aroma 4 x 1kg",
+      "name": "Jumbo Kip Kerrie Salade 200 g",
       "ingredients": [
-        "Jumbo's beste koffiebonen aroma 4 x 1kg"
+        "chicken"
       ],
-      "supermarket": null,
-      "price": 63.96,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-aroma-4-x-1kg-637316DSL",
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-kip-kerrie-salade-200-g-522949CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffiebonen Dark Roast 1 kg",
+      "name": "Jumbo Kip Mambo Salade 200 g",
       "ingredients": [
-        "Jumbo's Beste Koffiebonen Dark Roast 1 kg"
+        "chicken"
       ],
-      "supermarket": null,
-      "price": 15.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-dark-roast-1-kg-637271ZK",
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-kip-mambo-salade-200-g-522943CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffiebonen Espresso 1 kg",
+      "name": "Jumbo Kipsaté Salade 200 g",
       "ingredients": [
-        "Jumbo's Beste Koffiebonen Espresso 1 kg"
+        "Jumbo Kipsaté Salade 200 g"
       ],
-      "supermarket": null,
-      "price": 15.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-espresso-1-kg-637274ZK",
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-kipsate-salade-200-g-522940CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Beste Koffiebonen Espresso 4 x 1 kg",
+      "name": "Jumbo Mini Watermeloen 1 Stuk",
       "ingredients": [
-        "Jumbo's Beste Koffiebonen Espresso 4 x 1 kg"
+        "Jumbo Mini Watermeloen 1 Stuk"
       ],
-      "supermarket": null,
-      "price": 63.96,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-beste-koffiebonen-espresso-4-x-1-kg-637274DSL",
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "25% korting",
+      "url": "https://www.jumbo.com/producten/jumbo-mini-watermeloen-1-stuk-621759STK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Koffiecups 08 Espresso Superlativo 40 Stuks",
+      "name": "Jumbo Oude Kaas Salade 200 g",
       "ingredients": [
-        "Jumbo's Koffiecups 08 Espresso Superlativo 40 Stuks"
+        "cheese"
       ],
-      "supermarket": null,
-      "price": 9.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-koffiecups-08-espresso-superlativo-40-stuks-719524DS",
+      "supermarket": "Jumbo",
+      "price": 2.89,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-oude-kaas-salade-200-g-522951CUP",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Snackgroente Tomaatjes 500 g",
+      "ingredients": [
+        "tomatoes"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-snackgroente-tomaatjes-500-g-522578SC",
+      "unitSize": "",
       "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Surimi met Krab Salade 200 g",
+      "ingredients": [
+        "Jumbo Surimi met Krab Salade 200 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-surimi-met-krab-salade-200-g-522939CUP",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Tonijnsalade 200 g",
+      "ingredients": [
+        "Jumbo Tonijnsalade 200 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-tonijnsalade-200-g-522936CUP",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Varkenshaas Culinair 1 Stuk ca. 375 g",
+      "ingredients": [
+        "Jumbo Varkenshaas Culinair 1 Stuk ca. 375 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 4.5,
+      "discount": "12,00 per kilo",
+      "url": "https://www.jumbo.com/producten/jumbo-varkenshaas-culinair-1-stuk-ca-375-g-625959KGR",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Zalm Salade 200 g",
+      "ingredients": [
+        "salmon"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.99,
+      "discount": "2 voor 4,50",
+      "url": "https://www.jumbo.com/producten/jumbo-zalm-salade-200-g-522948CUP",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Zalmfilet met Huid Naturel ca. 360 g",
+      "ingredients": [
+        "Jumbo Zalmfilet met Huid Naturel ca. 360 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 6.49,
+      "discount": "voor 6,49 (was €8.99)",
+      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-ca-360-g-715170STK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo Zoete Puntpaprika 500 g",
+      "ingredients": [
+        "Jumbo Zoete Puntpaprika 500 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.49,
+      "discount": "voor 2,49 (was €3.29)",
+      "url": "https://www.jumbo.com/producten/jumbo-zoete-puntpaprika-500-g-534332PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
       "error": "Invalid URL"
     },
     {
@@ -476,15 +1093,16 @@
       "ingredients": [
         "Jumbo's Koffiepads Classic 36 Stuks"
       ],
-      "supermarket": null,
+      "supermarket": "Jumbo",
       "price": 5.79,
-      "discount": null,
+      "discount": "1+1 gratis",
       "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-classic-36-stuks-722002ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
@@ -492,15 +1110,33 @@
       "ingredients": [
         "Jumbo's Koffiepads Classic 56 Stuks"
       ],
-      "supermarket": null,
+      "supermarket": "Jumbo",
       "price": 8.49,
-      "discount": null,
+      "discount": "1+1 gratis",
       "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-classic-56-stuks-720874ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Jumbo's Koffiepads Dark Roast 56 Stuks",
+      "ingredients": [
+        "Jumbo's Koffiepads Dark Roast 56 Stuks"
+      ],
+      "supermarket": "Jumbo",
+      "price": 7.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-dark-roast-56-stuks-720872ZK",
+      "unitSize": "",
       "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
       "error": "Invalid URL"
     },
     {
@@ -508,319 +1144,407 @@
       "ingredients": [
         "Jumbo's Koffiepads Decaf 36 Stuks"
       ],
-      "supermarket": null,
+      "supermarket": "Jumbo",
       "price": 5.79,
-      "discount": null,
+      "discount": "1+1 gratis",
       "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-decaf-36-stuks-721334ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Lungo Intenso Koffiecups 40 Stuks",
+      "name": "Jumbo's Koffiepads Extra Dark 56 Stuks",
       "ingredients": [
-        "Jumbo's Lungo Intenso Koffiecups 40 Stuks"
+        "Jumbo's Koffiepads Extra Dark 56 Stuks"
       ],
-      "supermarket": null,
-      "price": 9.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-lungo-intenso-koffiecups-40-stuks-719525DS",
+      "supermarket": "Jumbo",
+      "price": 7.99,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/jumbo-s-koffiepads-extra-dark-56-stuks-720873ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's roodmerk filterkoffie 6 x 2 x 500g",
+      "name": "Kanzi Appel 1 kg",
       "ingredients": [
-        "Jumbo's roodmerk filterkoffie 6 x 2 x 500g"
+        "apples"
       ],
-      "supermarket": null,
-      "price": 91.08,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-roodmerk-filterkoffie-6-x-2-x-500g-638307DSL",
+      "supermarket": "Jumbo",
+      "price": 3.39,
+      "discount": "Bij aankoop van 2 tassen, Gratis emblemen (voeg toe)",
+      "url": "https://www.jumbo.com/producten/kanzi-appel-1-kg-283644STK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Jumbo's Witte Chocolade Koffie Speculoos 140 g",
+      "name": "Kroon Saksische Smeerleverworst 150 g",
       "ingredients": [
-        "Jumbo's Witte Chocolade Koffie Speculoos 140 g"
+        "Kroon Saksische Smeerleverworst 150 g"
       ],
-      "supermarket": null,
+      "supermarket": "Jumbo",
+      "price": 0.79,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/kroon-saksische-smeerleverworst-150-g-656336STK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Lay's Oven Baked Paprika Chips 150 gr",
+      "ingredients": [
+        "bell pepper"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.15,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/lay-s-oven-baked-paprika-chips-150-gr-563694ZK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Lindahls Protein Kvarg Stracciatella 450 g",
+      "ingredients": [
+        "Lindahls Protein Kvarg Stracciatella 450 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.79,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/lindahls-protein-kvarg-stracciatella-450-g-699254POT",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Lipton Ice Tea Green 24 x 250 ml",
+      "ingredients": [
+        "Lipton Ice Tea Green 24 x 250 ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 18.15,
+      "discount": "Alleen online, 15% korting",
+      "url": "https://www.jumbo.com/producten/lipton-ice-tea-green-24-x-250-ml-610610TRA",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Lipton Sparkling Blik 24x250ML",
+      "ingredients": [
+        "Lipton Sparkling Blik 24x250ML"
+      ],
+      "supermarket": "Jumbo",
+      "price": 17.13,
+      "discount": "Alleen online, 15% korting",
+      "url": "https://www.jumbo.com/producten/lipton-sparkling-blik-24x250ml-610609TRA",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Montaignan - Chardonnay - 750ML",
+      "ingredients": [
+        "Montaignan - Chardonnay - 750ML"
+      ],
+      "supermarket": "Jumbo",
+      "price": 4.99,
+      "discount": "voor 4,99 (was €5.99)",
+      "url": "https://www.jumbo.com/producten/montaignan-chardonnay-750ml-278404FLS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Neutral Vloeibaar Wasmiddel Wit 6 x 20 wasbeurten",
+      "ingredients": [
+        "Neutral Vloeibaar Wasmiddel Wit 6 x 20 wasbeurten"
+      ],
+      "supermarket": "Jumbo",
+      "price": 32.71,
+      "discount": "Alleen online, 30% korting",
+      "url": "https://www.jumbo.com/producten/neutral-vloeibaar-wasmiddel-wit-6-x-20-wasbeurten-474845DSL",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Aardbei 0% Vet 1L",
+      "ingredients": [
+        "strawberries"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-aardbei-0-vet-1l-198297STK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Aardbei Kers 0% Vet 1L",
+      "ingredients": [
+        "strawberries"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-aardbei-kers-0-vet-1l-65689PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Framboos 0% Vet 1L",
+      "ingredients": [
+        "Optimel Drinkyoghurt Framboos 0% Vet 1L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-framboos-0-vet-1l-65691PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Limoen 0% Vet 1L",
+      "ingredients": [
+        "Optimel Drinkyoghurt Limoen 0% Vet 1L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-limoen-0-vet-1l-65647PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Mango Passievrucht 0% Vet 1L",
+      "ingredients": [
+        "Optimel Drinkyoghurt Mango Passievrucht 0% Vet 1L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-mango-passievrucht-0-vet-1l-65649PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Peachy Aardbei 0% Vet Limited Edition 1L",
+      "ingredients": [
+        "strawberries"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.29,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-peachy-aardbei-0-vet-limited-edition-1l-65885PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Drinkyoghurt Sinaasappel Aardbei 0% Vet 1L",
+      "ingredients": [
+        "strawberries"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.19,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-drinkyoghurt-sinaasappel-aardbei-0-vet-1l-499069PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Proteïne Drinkyoghurt Aardbei Banaan 0% Vet 1L",
+      "ingredients": [
+        "strawberries"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.59,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-proteine-drinkyoghurt-aardbei-banaan-0-vet-1l-612030PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Vezels Drinkyoghurt Framboos Bosbes 0% Vet 1L",
+      "ingredients": [
+        "Optimel Vezels Drinkyoghurt Framboos Bosbes 0% Vet 1L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.39,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-vezels-drinkyoghurt-framboos-bosbes-0-vet-1l-736181PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Optimel Vezels Drinkyoghurt Mango Ananas 0% Vet 1L",
+      "ingredients": [
+        "Optimel Vezels Drinkyoghurt Mango Ananas 0% Vet 1L"
+      ],
+      "supermarket": "Jumbo",
+      "price": 2.39,
+      "discount": "2 voor 3,00",
+      "url": "https://www.jumbo.com/producten/optimel-vezels-drinkyoghurt-mango-ananas-0-vet-1l-736180PAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Prodent Tandpasta Cool Mint 75 ml",
+      "ingredients": [
+        "Prodent Tandpasta Cool Mint 75 ml"
+      ],
+      "supermarket": "Jumbo",
+      "price": 1.85,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/prodent-tandpasta-cool-mint-75-ml-551747TUB",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Rivella Original 1,5 L",
+      "ingredients": [
+        "Rivella Original 1,5 L"
+      ],
+      "supermarket": "Jumbo",
       "price": 2.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/jumbo-s-witte-chocolade-koffie-speculoos-140-g-685855PAK",
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/rivella-original-1,5-l-430350FLS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "L'OR Espresso Lungo Profondo Aluminium Capsules 20 Stuks 104 g",
+      "name": "Robijn Klein & Krachtig Wasmiddel Kleur 1,19L",
       "ingredients": [
-        "L'OR Espresso Lungo Profondo Aluminium Capsules 20 Stuks 104 g"
+        "Robijn Klein & Krachtig Wasmiddel Kleur 1,19L"
       ],
-      "supermarket": null,
-      "price": 8.49,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/l-or-espresso-lungo-profondo-aluminium-capsules-20-stuks-104-g-191901DS",
+      "supermarket": "Jumbo",
+      "price": 30.49,
+      "discount": "2+3 gratis",
+      "url": "https://www.jumbo.com/producten/robijn-klein-krachtig-wasmiddel-kleur-1,19l-690247FLS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "La Place Koffiebonen Dolce 1 kg",
+      "name": "SPA INTENSE Bruisend Natuurlijk Mineraalwater 6x1,5L",
       "ingredients": [
-        "La Place Koffiebonen Dolce 1 kg"
+        "SPA INTENSE Bruisend Natuurlijk Mineraalwater 6x1,5L"
       ],
-      "supermarket": null,
-      "price": 18.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-dolce-1-kg-323849ZK",
+      "supermarket": "Jumbo",
+      "price": 6.15,
+      "discount": "Alleen online, 20% korting",
+      "url": "https://www.jumbo.com/producten/spa-intense-bruisend-natuurlijk-mineraalwater-6x1,5l-607900DS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "La Place Koffiebonen Espresse Arabica 4 x 1000 g",
-      "ingredients": [
-        "La Place Koffiebonen Espresse Arabica 4 x 1000 g"
-      ],
-      "supermarket": null,
-      "price": 75.95,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-espresse-arabica-4-x-1000-g-323799DSL",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "La Place Koffiebonen Lungo Intenso 1 KG",
-      "ingredients": [
-        "La Place Koffiebonen Lungo Intenso 1 KG"
-      ],
-      "supermarket": null,
-      "price": 18.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-lungo-intenso-1-kg-444203ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "La Place Koffiebonen Lungo Originale 1KG",
-      "ingredients": [
-        "La Place Koffiebonen Lungo Originale 1KG"
-      ],
-      "supermarket": null,
-      "price": 18.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-lungo-originale-1kg-323798ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "La Place Koffiebonen Ristretto 1 kg",
-      "ingredients": [
-        "La Place Koffiebonen Ristretto 1 kg"
-      ],
-      "supermarket": null,
-      "price": 18.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/la-place-koffiebonen-ristretto-1-kg-323839ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Lavazza Espresso Barista Intenso koffiebonen 500g",
-      "ingredients": [
-        "Lavazza Espresso Barista Intenso koffiebonen 500g"
-      ],
-      "supermarket": null,
-      "price": 15.79,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/lavazza-espresso-barista-intenso-koffiebonen-500g-539448ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Melitta CaféBar Selection Crema Intense Filterkoffie 250g",
-      "ingredients": [
-        "Melitta CaféBar Selection Crema Intense Filterkoffie 250g"
-      ],
-      "supermarket": null,
-      "price": 4.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/melitta-cafebar-selection-crema-intense-filterkoffie-250g-713195ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Melitta CaféBar Selection Espresso Classic Filterkoffie 250g",
-      "ingredients": [
-        "Melitta CaféBar Selection Espresso Classic Filterkoffie 250g"
-      ],
-      "supermarket": null,
-      "price": 4.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/melitta-cafebar-selection-espresso-classic-filterkoffie-250g-713199ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Melitta CaféBar Selection Espresso Intense Filterkoffie 250 g",
-      "ingredients": [
-        "Melitta CaféBar Selection Espresso Intense Filterkoffie 250 g"
-      ],
-      "supermarket": null,
-      "price": 4.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/melitta-cafebar-selection-espresso-intense-filterkoffie-250-g-713194ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Najjar Arabische Koffie 200g",
-      "ingredients": [
-        "Najjar Arabische Koffie 200g"
-      ],
-      "supermarket": null,
-      "price": 6.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/najjar-arabische-koffie-200g-705301ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Nescafé Cappuccino Koffiedrank 10 x 12,5 g",
-      "ingredients": [
-        "Nescafé Cappuccino Koffiedrank 10 x 12,5 g"
-      ],
-      "supermarket": null,
-      "price": 3.69,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/nescafe-cappuccino-koffiedrank-10-x-12,5-g-383945DS",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "NESCAFÉ Dolce Gusto, Koffie Grande , 3 x 16 capsules",
-      "ingredients": [
-        "NESCAFÉ Dolce Gusto, Koffie Grande , 3 x 16 capsules"
-      ],
-      "supermarket": null,
-      "price": 19.47,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/nescafe-dolce-gusto-koffie-grande-3-x-16-capsules-38991DSL",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Rood Snelfiltermaling 500 g",
-      "ingredients": [
-        "Rood Snelfiltermaling 500 g"
-      ],
-      "supermarket": null,
-      "price": 2.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/rood-snelfiltermaling-500-g-390414PAK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Segafredo Zanetti Intermezzo Roasted Coffee Beans 1000 g",
-      "ingredients": [
-        "Segafredo Zanetti Intermezzo Roasted Coffee Beans 1000 g"
-      ],
-      "supermarket": null,
-      "price": 19.99,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/segafredo-zanetti-intermezzo-roasted-coffee-beans-1000-g-140079PAK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
-      "error": "Invalid URL"
-    },
-    {
-      "name": "Senseo Classic Koffiepads 54 Stuks Maxi Pack 375 g",
-      "ingredients": [
-        "Senseo Classic Koffiepads 54 Stuks Maxi Pack 375 g"
-      ],
-      "supermarket": null,
-      "price": 9.25,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/senseo-classic-koffiepads-54-stuks-maxi-pack-375-g-156549ZK",
-      "promotionTag": null,
-      "salePriceEur": null,
-      "pricePerUnitEur": null,
-      "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
@@ -828,35 +1552,106 @@
       "ingredients": [
         "Starbucks® Pike Place Medium Roast koffiebonen 450 gram"
       ],
-      "supermarket": null,
+      "supermarket": "Jumbo",
       "price": 13.99,
-      "discount": null,
+      "discount": "Bij aankoop van 1 zak, Gratis emblemen (voeg toe)",
       "url": "https://www.jumbo.com/producten/starbucks-pike-place-medium-roast-koffiebonen-450-gram-422544ZK",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
-      "savingsText": null,
       "error": "Invalid URL"
     },
     {
-      "name": "Zonnatura Bio Meergranen Koffie 100 g",
+      "name": "Tiempo & Tierra - Verdejo - 750ML",
       "ingredients": [
-        "Zonnatura Bio Meergranen Koffie 100 g"
+        "Tiempo & Tierra - Verdejo - 750ML"
       ],
-      "supermarket": null,
-      "price": 3.69,
-      "discount": null,
-      "url": "https://www.jumbo.com/producten/zonnatura-bio-meergranen-koffie-100-g-149217POT",
+      "supermarket": "Jumbo",
+      "price": 3.99,
+      "discount": "voor 3,99 (was €4.99)",
+      "url": "https://www.jumbo.com/producten/tiempo-tierra-verdejo-750ml-450596FLS",
+      "unitSize": "",
+      "savingsText": null,
       "promotionTag": null,
       "salePriceEur": null,
       "pricePerUnitEur": null,
       "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Tre Filari - Primitivo - 750ML",
+      "ingredients": [
+        "Tre Filari - Primitivo - 750ML"
+      ],
+      "supermarket": "Jumbo",
+      "price": 7.99,
+      "discount": "voor 7,99 (was €9.99)",
+      "url": "https://www.jumbo.com/producten/tre-filari-primitivo-750ml-382372FLS",
+      "unitSize": "",
       "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Vida Barcelona - Sparkling 0,0% Alcoholvrij 750ML",
+      "ingredients": [
+        "Vida Barcelona - Sparkling 0,0% Alcoholvrij 750ML"
+      ],
+      "supermarket": "Jumbo",
+      "price": 5.99,
+      "discount": "voor 5,99 (was €6.99)",
+      "url": "https://www.jumbo.com/producten/vida-barcelona-sparkling-0,0-alcoholvrij-750ml-714586FLS",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Wasa Volkoren 260 g",
+      "ingredients": [
+        "Wasa Volkoren 260 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 1.65,
+      "discount": "2+1 gratis",
+      "url": "https://www.jumbo.com/producten/wasa-volkoren-260-g-173672STK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
+      "error": "Invalid URL"
+    },
+    {
+      "name": "Westland Rundvleessalade Voordeelverpakking 560 g",
+      "ingredients": [
+        "Westland Rundvleessalade Voordeelverpakking 560 g"
+      ],
+      "supermarket": "Jumbo",
+      "price": 4.59,
+      "discount": "1+1 gratis",
+      "url": "https://www.jumbo.com/producten/westland-rundvleessalade-voordeelverpakking-560-g-484083BAK",
+      "unitSize": "",
+      "savingsText": null,
+      "promotionTag": null,
+      "salePriceEur": null,
+      "pricePerUnitEur": null,
+      "pricePerUnitLabel": null,
       "error": "Invalid URL"
     }
   ],
-  "count": 50,
-  "ingredientCount": 50,
-  "cachedAt": "2026-06-26 16:17:01"
+  "count": 92,
+  "ingredientCount": 78,
+  "actorId": "harvestedge~dutch-supermarkets-all-11",
+  "runId": "7P0KjvyEqTdIxupHR"
 }
