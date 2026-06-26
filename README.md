@@ -27,3 +27,5 @@ See [dinner/README.md](dinner/README.md) for full setup (Apify, ElevenLabs, Open
 |------|-------------|
 | `dinner/` | Main Sale Dinner app (Python server + frontend) |
 | `index.html`, `game.js` | Conway's Game of Life (original workspace) |
+
+## test
