@@ -1,16 +1,16 @@
 :root {
-  --bg: #faf6ef;
-  --bg-warm: #f3ebe0;
+  --bg: #dce8c8;
+  --bg-warm: #d0dfc0;
   --surface: #ffffff;
   --ink: #1a1714;
-  --ink-soft: #5c534a;
+  --ink-soft: #4a5240;
   --accent: #c45d2c;
   --accent-dark: #9a4520;
   --accent-soft: #f9e8dc;
-  --green: #2d6a4f;
-  --green-soft: #d8f3dc;
-  --border: #e6ddd2;
-  --shadow: 0 12px 40px rgba(26, 23, 20, 0.08);
+  --green: #4a7c3f;
+  --green-soft: #c5ddb8;
+  --border: #b8c9a8;
+  --shadow: 0 12px 40px rgba(40, 56, 32, 0.1);
   --radius: 18px;
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "DM Sans", system-ui, sans-serif;
@@ -28,8 +28,8 @@ body {
   font-family: var(--font-body);
   color: var(--ink);
   background:
-    radial-gradient(circle at 10% 0%, #ffe8d6 0%, transparent 40%),
-    radial-gradient(circle at 90% 10%, #d8f3dc 0%, transparent 35%),
+    radial-gradient(circle at 10% 0%, #c5ddb8 0%, transparent 45%),
+    radial-gradient(circle at 90% 10%, #b8cf9e 0%, transparent 40%),
     var(--bg);
   line-height: 1.5;
 }
