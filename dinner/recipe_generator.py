@@ -4,6 +4,7 @@ import hashlib
 import re
 
 from savings_utils import compute_recipe_savings
+from ingredient_amounts import attach_measured_ingredients
 
 PANTRY = [
     "olive oil", "salt", "pepper", "garlic", "onion", "butter",
@@ -324,7 +325,7 @@ def _generate_rule_based_recipes(sale_items, limit=3, deals=None):
             continue
         seen.add(recipe["name"])
         savings = compute_recipe_savings(recipe["saleIngredients"], deals or [])
-        unique.append({**recipe, **savings})
+        unique.append(attach_measured_ingredients({**recipe, **savings}))
 
     return unique[:limit]
 

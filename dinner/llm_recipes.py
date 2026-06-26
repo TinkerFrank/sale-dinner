@@ -6,6 +6,7 @@ import re
 import urllib.error
 import urllib.request
 
+from ingredient_amounts import attach_measured_ingredients
 from savings_utils import compute_recipe_savings
 
 
@@ -54,6 +55,7 @@ Create exactly {limit} different dinner recipes. Rules:
 4. Keep recipes realistic for 4 servings, 20–45 minutes.
 5. Steps should be clear, numbered-friendly sentences suitable for text-to-speech (no markdown).
 6. Mix styles: e.g. skillet, pasta, sheet pan, bowl — don't repeat the same format.
+7. Include realistic amounts for every ingredient (grams, cups, tbsp, or whole items).
 
 Respond with ONLY valid JSON in this shape:
 {{
@@ -65,6 +67,10 @@ Respond with ONLY valid JSON in this shape:
       "servings": 4,
       "saleIngredients": ["exact sale item names used"],
       "pantryIngredients": ["pantry items added"],
+      "measuredIngredients": [
+        {{ "name": "chicken breast", "amount": "600 g" }},
+        {{ "name": "broccoli", "amount": "300 g (2 cups), chopped" }}
+      ],
       "steps": ["step 1", "step 2", "step 3"]
     }}
   ]
@@ -110,6 +116,14 @@ def _finalize_recipe(raw, index, sale_items, deals):
     sale_ingredients = [s.strip() for s in (raw.get("saleIngredients") or []) if s and s.strip()]
     pantry_ingredients = [s.strip() for s in (raw.get("pantryIngredients") or []) if s and s.strip()]
     steps = [s.strip() for s in (raw.get("steps") or []) if s and s.strip()]
+    measured = raw.get("measuredIngredients") or []
+    measured_ingredients = []
+    for item in measured:
+        if isinstance(item, dict) and item.get("name"):
+            measured_ingredients.append({
+                "name": str(item["name"]).strip(),
+                "amount": str(item.get("amount") or "as needed").strip(),
+            })
 
     if not _sale_item_used(sale_ingredients, sale_items):
         return None
@@ -130,7 +144,9 @@ def _finalize_recipe(raw, index, sale_items, deals):
         "matchedIngredients": sale_ingredients,
         "steps": steps,
     }
-    return {**recipe, **compute_recipe_savings(sale_ingredients, deals or [])}
+    if measured_ingredients:
+        recipe["measuredIngredients"] = measured_ingredients
+    return attach_measured_ingredients({**recipe, **compute_recipe_savings(sale_ingredients, deals or [])})
 
 
 def generate_recipes_with_llm(sale_items, limit=3, deals=None):

@@ -24,7 +24,21 @@ const voiceSelect = document.getElementById("voice-select");
 const playAllBtn = document.getElementById("play-all-btn");
 const stopBtn = document.getElementById("stop-btn");
 const toast = document.getElementById("toast");
-const layout = document.querySelector(".layout");
+const inputScreen = document.querySelector(".input-page");
+const assistantPanel = document.getElementById("assistant-panel");
+const assistantStage = document.getElementById("assistant-stage");
+const assistantStatus = document.getElementById("assistant-status");
+const assistantCaption = document.getElementById("assistant-caption");
+const assistantStepLabel = document.getElementById("assistant-step-label");
+const assistantProgress = document.getElementById("assistant-progress");
+const orbCore = document.getElementById("orb-core");
+const stepConfirmBtn = document.getElementById("step-confirm-btn");
+const voiceListenHint = document.getElementById("voice-listen-hint");
+const assistantNow = document.getElementById("assistant-now");
+const assistantNowText = document.getElementById("assistant-now-text");
+const detailIngredients = document.getElementById("detail-ingredients");
+
+let stepConfirmResolver = null;
 
 let currentRecipe = null;
 let loadedDeals = [];
@@ -32,6 +46,289 @@ let recipeSuggestions = new Map();
 let audioCache = new Map();
 let currentAudio = null;
 let playAllAbort = false;
+let playAllRunning = false;
+let audioContext = null;
+let vizRaf = null;
+let assistantState = "idle";
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let speechRecognizer = null;
+let voiceListenActive = false;
+
+const NEXT_STEP_PHRASES = [
+  "next", "done", "ready", "finished", "finish", "continue", "ok", "okay",
+  "got it", "all set", "next step", "move on", "go on", "complete", "yes",
+  "klaar", "volgende", "oke", "oké", "klaar met", "verder",
+];
+
+function matchesNextCommand(transcript) {
+  const text = String(transcript || "").toLowerCase().trim();
+  return NEXT_STEP_PHRASES.some((phrase) => text.includes(phrase));
+}
+
+function setVoiceListenUI(active) {
+  if (voiceListenHint) voiceListenHint.hidden = !active;
+  assistantPanel?.classList.toggle("is-listening", active);
+  if (assistantStatus) {
+    assistantStatus.classList.toggle("listening", active);
+    if (active) assistantStatus.textContent = "Listening";
+    else if (assistantState === "waiting") assistantStatus.textContent = "Your turn";
+  }
+}
+
+function stopVoiceListen() {
+  voiceListenActive = false;
+  setVoiceListenUI(false);
+  if (speechRecognizer) {
+    speechRecognizer.onresult = null;
+    speechRecognizer.onend = null;
+    speechRecognizer.onerror = null;
+    try {
+      speechRecognizer.stop();
+    } catch {
+      /* ignore */
+    }
+    speechRecognizer = null;
+  }
+}
+
+function startVoiceListen(onMatch) {
+  stopVoiceListen();
+
+  if (!SpeechRecognition) return false;
+
+  speechRecognizer = new SpeechRecognition();
+  speechRecognizer.continuous = true;
+  speechRecognizer.interimResults = false;
+  speechRecognizer.lang = navigator.language || "en-US";
+  voiceListenActive = true;
+  setVoiceListenUI(true);
+
+  speechRecognizer.onresult = (event) => {
+    if (!voiceListenActive) return;
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      if (!event.results[i].isFinal) continue;
+      const heard = event.results[i][0].transcript;
+      if (matchesNextCommand(heard)) {
+        stopVoiceListen();
+        showToast(`Heard: "${heard.trim()}"`);
+        onMatch(heard);
+        return;
+      }
+    }
+  };
+
+  speechRecognizer.onerror = (event) => {
+    if (event.error === "aborted" || event.error === "no-speech") return;
+    console.warn("Speech recognition:", event.error);
+    if (event.error === "not-allowed") {
+      stopVoiceListen();
+      updateAssistantCaption("Microphone blocked — tap the button below to continue.");
+      if (stepConfirmBtn) stepConfirmBtn.hidden = false;
+    }
+  };
+
+  speechRecognizer.onend = () => {
+    if (voiceListenActive && stepConfirmResolver) {
+      try {
+        speechRecognizer.start();
+      } catch {
+        /* restart on next tick */
+        setTimeout(() => {
+          if (voiceListenActive && speechRecognizer) {
+            try { speechRecognizer.start(); } catch { /* ignore */ }
+          }
+        }, 300);
+      }
+    }
+  };
+
+  try {
+    speechRecognizer.start();
+    return true;
+  } catch (error) {
+    console.warn("Could not start speech recognition:", error);
+    stopVoiceListen();
+    return false;
+  }
+}
+
+function setAssistantState(state) {
+  assistantState = state;
+  if (!assistantPanel) return;
+
+  assistantPanel.classList.remove("is-loading", "is-speaking", "is-waiting", "is-active");
+  assistantStatus.classList.remove("loading", "speaking", "waiting");
+
+  if (state === "loading") {
+    assistantPanel.classList.add("is-loading", "is-active");
+    assistantStatus.classList.add("loading");
+    assistantStatus.textContent = "Preparing";
+  } else if (state === "speaking") {
+    assistantPanel.classList.add("is-speaking", "is-active");
+    assistantStatus.classList.add("speaking");
+    assistantStatus.textContent = "Speaking";
+    assistantPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  } else if (state === "waiting") {
+    assistantPanel.classList.add("is-waiting", "is-active");
+    assistantStatus.classList.add("waiting");
+    assistantStatus.textContent = "Your turn";
+  } else {
+    assistantStatus.textContent = "Ready";
+    stopVoiceListen();
+    if (assistantNow) assistantNow.hidden = true;
+    if (stepConfirmBtn) stepConfirmBtn.hidden = true;
+  }
+}
+
+function showCurrentStep(stepIndex, stepText, total) {
+  if (assistantNow) assistantNow.hidden = false;
+  if (assistantNowText) assistantNowText.textContent = stepText;
+  if (assistantStepLabel) {
+    assistantStepLabel.textContent = `Step ${stepIndex + 1} of ${total}`;
+  }
+
+  document.querySelectorAll(".step-item").forEach((el, i) => {
+    el.classList.toggle("current", i === stepIndex);
+    el.classList.toggle("playing", i === stepIndex && (assistantState === "speaking" || assistantState === "waiting"));
+  });
+}
+
+function waitForStepConfirm(stepIndex, total) {
+  return new Promise((resolve) => {
+    if (playAllAbort) {
+      resolve(false);
+      return;
+    }
+
+    setAssistantState("waiting");
+    showCurrentStep(stepIndex, currentRecipe.steps[stepIndex], total);
+
+    const voiceStarted = startVoiceListen(() => resolveStepConfirm(true));
+
+    if (voiceStarted) {
+      updateAssistantCaption('Say "next" or "done" when you finish this step.');
+      if (stepConfirmBtn) stepConfirmBtn.hidden = true;
+    } else {
+      updateAssistantCaption("Voice unavailable — tap the button when you've finished this step.");
+      if (stepConfirmBtn) {
+        stepConfirmBtn.hidden = false;
+        stepConfirmBtn.textContent =
+          stepIndex < total - 1 ? "Done — next step" : "Finish cook-along";
+      }
+    }
+
+    stepConfirmResolver = (confirmed) => {
+      stopVoiceListen();
+      stepConfirmResolver = null;
+      if (stepConfirmBtn) stepConfirmBtn.hidden = true;
+      resolve(confirmed);
+    };
+  });
+}
+
+function resolveStepConfirm(confirmed = true) {
+  if (stepConfirmResolver) stepConfirmResolver(confirmed);
+}
+
+function updateAssistantCaption(text) {
+  if (!assistantCaption) return;
+  assistantCaption.classList.add("is-updating");
+  setTimeout(() => {
+    assistantCaption.textContent = text;
+    assistantCaption.classList.remove("is-updating");
+  }, 180);
+}
+
+function setActiveStep(stepIndex, total) {
+  showCurrentStep(stepIndex, currentRecipe?.steps?.[stepIndex] || "", total);
+
+  assistantProgress?.querySelectorAll(".progress-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === stepIndex);
+    dot.classList.toggle("done", i < stepIndex);
+  });
+
+  document.querySelectorAll(".step-play").forEach((btn, i) => {
+    btn.classList.toggle("is-active", i === stepIndex && assistantState === "speaking");
+  });
+}
+
+function renderAssistantProgress(stepCount) {
+  if (!assistantProgress) return;
+
+  assistantProgress.innerHTML = Array.from({ length: stepCount }, (_, i) =>
+    `<button type="button" class="progress-dot" data-step="${i}" aria-label="Go to step ${i + 1}"></button>`
+  ).join("");
+
+  assistantProgress.querySelectorAll(".progress-dot").forEach((dot) => {
+    dot.addEventListener("click", async () => {
+      if (!currentRecipe || assistantState === "loading") return;
+      stopAudio();
+      playAllAbort = false;
+      const idx = Number(dot.dataset.step);
+      await speakStep(idx, currentRecipe.steps[idx]);
+    });
+  });
+}
+
+function resetAssistant(recipe) {
+  setAssistantState("idle");
+  stopVisualizer();
+  if (recipe) {
+    renderAssistantProgress(recipe.steps.length);
+    updateAssistantCaption('Say "next" or "done" after each step — fully hands-free.');
+    if (assistantStepLabel) assistantStepLabel.textContent = "Guided cook-along";
+  }
+  stopBtn.hidden = true;
+  playAllBtn.disabled = false;
+  playAllBtn.textContent = "Start guided cook-along";
+  if (stepConfirmBtn) stepConfirmBtn.hidden = true;
+  if (assistantNow) assistantNow.hidden = true;
+}
+
+function getAudioContext() {
+  if (!audioContext) {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  return audioContext;
+}
+
+function startVisualizer(audio) {
+  stopVisualizer();
+  const ctx = getAudioContext();
+  if (ctx.state === "suspended") ctx.resume();
+
+  let source;
+  try {
+    source = ctx.createMediaElementSource(audio);
+  } catch {
+    return;
+  }
+
+  const analyser = ctx.createAnalyser();
+  analyser.fftSize = 64;
+  source.connect(analyser);
+  analyser.connect(ctx.destination);
+
+  const bins = new Uint8Array(analyser.frequencyBinCount);
+
+  function tick() {
+    analyser.getByteFrequencyData(bins);
+    let sum = 0;
+    for (let i = 0; i < bins.length; i++) sum += bins[i];
+    const level = sum / bins.length / 255;
+    const scale = 1 + level * 0.3;
+    if (orbCore) orbCore.style.transform = `scale(${scale})`;
+    vizRaf = requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+function stopVisualizer() {
+  if (vizRaf) cancelAnimationFrame(vizRaf);
+  vizRaf = null;
+  if (orbCore) orbCore.style.transform = "";
+}
 
 function showToast(message) {
   toast.textContent = message;
@@ -50,11 +347,21 @@ function stopAudio() {
     currentAudio.pause();
     currentAudio = null;
   }
-  document.querySelectorAll(".step-item.playing").forEach((el) => {
-    el.classList.remove("playing");
+  stopVisualizer();
+  stopVoiceListen();
+  resolveStepConfirm(false);
+  document.querySelectorAll(".step-item.playing, .step-item.current").forEach((el) => {
+    el.classList.remove("playing", "current");
   });
+  document.querySelectorAll(".step-play.is-active").forEach((el) => {
+    el.classList.remove("is-active");
+  });
+  setAssistantState("idle");
   stopBtn.hidden = true;
   playAllBtn.disabled = false;
+  playAllBtn.textContent = "Start guided cook-along";
+  if (stepConfirmBtn) stepConfirmBtn.hidden = true;
+  if (voiceListenHint) voiceListenHint.hidden = true;
 }
 
 function playAudioBlob(blob) {
@@ -63,13 +370,17 @@ function playAudioBlob(blob) {
     const audio = new Audio(url);
     currentAudio = audio;
 
+    audio.onplay = () => startVisualizer(audio);
+
     audio.onended = () => {
+      stopVisualizer();
       URL.revokeObjectURL(url);
       currentAudio = null;
       resolve();
     };
 
     audio.onerror = () => {
+      stopVisualizer();
       URL.revokeObjectURL(url);
       currentAudio = null;
       reject(new Error("Audio playback failed"));
@@ -108,27 +419,59 @@ async function fetchSpeech(text) {
 }
 
 async function speakStep(stepIndex, stepText) {
+  stopVoiceListen();
   const stepEl = stepsList.children[stepIndex];
   const playBtn = stepEl.querySelector(".step-play");
+  const total = currentRecipe?.steps.length || 0;
+
+  setAssistantState("loading");
+  setActiveStep(stepIndex, total);
+  updateAssistantCaption(stepText);
+  stopBtn.hidden = false;
+  playAllBtn.disabled = true;
 
   stepEl.classList.add("playing");
   playBtn.disabled = true;
   playBtn.textContent = "…";
+  playBtn.classList.add("is-active");
 
   try {
     const intro = `Step ${stepIndex + 1}. ${stepText}`;
     const blob = await fetchSpeech(intro);
     if (playAllAbort) return;
+
+    setAssistantState("speaking");
+    setActiveStep(stepIndex, total);
     await playAudioBlob(blob);
-    stepEl.classList.remove("playing");
+    if (playAllAbort) return;
+
+    const confirmed = await waitForStepConfirm(stepIndex, total);
+    if (!confirmed || playAllAbort) return;
+
+    stepEl.classList.remove("playing", "current");
     stepEl.classList.add("done");
+    playBtn.classList.remove("is-active");
+
+    assistantProgress?.querySelectorAll(".progress-dot").forEach((dot, i) => {
+      if (i === stepIndex) dot.classList.add("done");
+      dot.classList.remove("active");
+    });
+
+    if (!playAllRunning) {
+      setAssistantState("idle");
+      stopBtn.hidden = true;
+      playAllBtn.disabled = false;
+      updateAssistantCaption("Step complete. Start again or pick another step.");
+    }
   } catch (error) {
     stepEl.classList.remove("playing");
+    playBtn.classList.remove("is-active");
+    setAssistantState("idle");
     showToast(error.message);
     throw error;
   } finally {
     playBtn.disabled = false;
-    playBtn.textContent = "▶ Listen";
+    playBtn.textContent = "Assisted-AI";
   }
 }
 
@@ -136,18 +479,28 @@ async function playAllSteps() {
   if (!currentRecipe) return;
 
   playAllAbort = false;
+  playAllRunning = true;
   playAllBtn.disabled = true;
+  playAllBtn.textContent = "Guiding…";
   stopBtn.hidden = false;
 
   document.querySelectorAll(".step-item.done").forEach((el) => el.classList.remove("done"));
+  assistantProgress?.querySelectorAll(".progress-dot.done").forEach((dot) => dot.classList.remove("done"));
 
-  for (let i = 0; i < currentRecipe.steps.length; i++) {
-    if (playAllAbort) break;
-    await speakStep(i, currentRecipe.steps[i]);
+  try {
+    for (let i = 0; i < currentRecipe.steps.length; i++) {
+      if (playAllAbort) break;
+      await speakStep(i, currentRecipe.steps[i]);
+    }
+  } finally {
+    playAllRunning = false;
   }
 
+  setAssistantState("idle");
   stopBtn.hidden = true;
   playAllBtn.disabled = false;
+  playAllBtn.textContent = "Start guided cook-along";
+  updateAssistantCaption("All steps complete — enjoy your dinner!");
 
   if (!playAllAbort) {
     showToast("All steps complete — enjoy your dinner!");
@@ -203,8 +556,41 @@ function renderRecipeSavings(recipe) {
   }).join("");
 }
 
+function coverFallback(event) {
+  event.target.onerror = null;
+  event.target.src = window.RecipeCovers?.DEFAULT_COVER || "/images/covers/dinner.svg";
+}
+window.coverFallback = coverFallback;
+
+function enrichRecipe(recipe) {
+  let r = recipe;
+  if (window.RecipeCovers?.attachRecipeCover) r = window.RecipeCovers.attachRecipeCover(r);
+  if (window.RecipeIngredients?.attachMeasuredIngredients) r = window.RecipeIngredients.attachMeasuredIngredients(r);
+  return r;
+}
+
+function renderDetailIngredients(recipe) {
+  if (!detailIngredients) return;
+
+  const note = document.getElementById("ingredients-servings-note");
+  if (note) note.textContent = `Amounts for ${recipe.servings || 4} servings.`;
+
+  const items = recipe.measuredIngredients || [];
+  detailIngredients.innerHTML = items.map((item) => `
+    <li class="ingredient-row">
+      <span class="ing-amount">${escapeHtml(item.amount)}</span>
+      <span class="ing-name">${escapeHtml(item.name)}</span>
+    </li>
+  `).join("");
+}
+
+function withCover(recipe) {
+  return enrichRecipe(recipe);
+}
+
 function renderRecipeCards(suggestions, saleItems) {
-  recipeSuggestions = new Map(suggestions.map((r) => [r.id, r]));
+  const enriched = suggestions.map(withCover);
+  recipeSuggestions = new Map(enriched.map((r) => [r.id, r]));
 
   if (suggestions.length === 0) {
     recipeCards.innerHTML = `
@@ -217,24 +603,31 @@ function renderRecipeCards(suggestions, saleItems) {
 
   resultsSummary.textContent = `Found ${suggestions.length} custom recipe${suggestions.length === 1 ? "" : "s"} from ${saleItems.length} sale item${saleItems.length === 1 ? "" : "s"}.`;
 
-  recipeCards.innerHTML = suggestions.map((recipe) => {
+  recipeCards.innerHTML = enriched.map((recipe) => {
     const saleTags = (recipe.saleIngredients || recipe.matchedIngredients || []).slice(0, 4);
     const pantryCount = (recipe.pantryIngredients || []).length;
+    const coverAlt = `${recipe.name} — ${recipe.coverLabel || "dinner"}`;
 
     return `
     <article class="recipe-card" data-id="${recipe.id}" tabindex="0" role="button" aria-label="View ${recipe.name}">
-      <h3>${escapeHtml(recipe.name)}</h3>
-      <p>${escapeHtml(recipe.description)}</p>
-      <div class="card-meta">
-        <span class="badge badge-match">${saleTags.length} sale item${saleTags.length === 1 ? "" : "s"}</span>
-        ${recipe.tags?.includes("ai") ? '<span class="badge badge-ai">AI recipe</span>' : ""}
-        ${savingsBadge(recipe)}
-        <span class="badge badge-time">${recipe.time}</span>
+      <div class="recipe-card-cover">
+        <img src="${escapeHtml(recipe.cover)}" alt="${escapeHtml(coverAlt)}" loading="lazy" class="recipe-cover-img" onerror="coverFallback(event)">
+        <span class="cover-tag">${escapeHtml(recipe.coverLabel || "Dinner")}</span>
       </div>
-      <ul class="tag-list tag-sale">
-        ${saleTags.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-      </ul>
-      ${pantryCount ? `<p class="card-pantry-note">+ ${pantryCount} pantry staple${pantryCount === 1 ? "" : "s"}</p>` : ""}
+      <div class="recipe-card-body">
+        <h3>${escapeHtml(recipe.name)}</h3>
+        <p>${escapeHtml(recipe.description)}</p>
+        <div class="card-meta">
+          <span class="badge badge-match">${saleTags.length} sale item${saleTags.length === 1 ? "" : "s"}</span>
+          ${recipe.tags?.includes("ai") ? '<span class="badge badge-ai">AI recipe</span>' : ""}
+          ${savingsBadge(recipe)}
+          <span class="badge badge-time">${recipe.time}</span>
+        </div>
+        <ul class="tag-list tag-sale">
+          ${saleTags.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+        ${pantryCount ? `<p class="card-pantry-note">+ ${pantryCount} pantry staple${pantryCount === 1 ? "" : "s"}</p>` : ""}
+      </div>
     </article>`;
   }).join("");
 
@@ -257,32 +650,51 @@ function openRecipe(id) {
     return;
   }
 
-  currentRecipe = recipe;
+  currentRecipe = withCover(recipe);
   stopAudio();
   audioCache.clear();
 
-  detailName.textContent = recipe.name;
-  detailDesc.textContent = recipe.description;
-  detailTime.textContent = `⏱ ${recipe.time}`;
-  detailServings.textContent = `🍽 Serves ${recipe.servings}`;
+  const detailCover = document.getElementById("detail-cover");
+  const detailCoverLabel = document.getElementById("detail-cover-label");
+  if (detailCover) {
+    detailCover.onerror = coverFallback;
+    detailCover.src = currentRecipe.cover;
+    detailCover.alt = `${currentRecipe.name} cover`;
+  }
+  if (detailCoverLabel) {
+    detailCoverLabel.textContent = currentRecipe.coverLabel || "Dinner";
+  }
 
-  detailSaleItems.innerHTML = (recipe.saleIngredients || recipe.matchedIngredients || [])
+  detailName.textContent = currentRecipe.name;
+  detailDesc.textContent = currentRecipe.description;
+  detailTime.textContent = currentRecipe.time;
+  detailServings.textContent = `Serves ${currentRecipe.servings}`;
+
+  const breadcrumbName = document.getElementById("breadcrumb-name");
+  if (breadcrumbName) breadcrumbName.textContent = currentRecipe.name;
+
+  detailSaleItems.innerHTML = (currentRecipe.saleIngredients || currentRecipe.matchedIngredients || [])
     .map((item) => `<li>${escapeHtml(item)}</li>`)
     .join("");
 
-  detailPantry.innerHTML = (recipe.pantryIngredients || [])
+  detailPantry.innerHTML = (currentRecipe.pantryIngredients || [])
     .map((item) => `<li>${escapeHtml(item)}</li>`)
     .join("");
 
-  renderRecipeSavings(recipe);
+  renderRecipeSavings(currentRecipe);
+  renderDetailIngredients(currentRecipe);
 
-  stepsList.innerHTML = recipe.steps.map((step, index) => `
+  stepsList.innerHTML = currentRecipe.steps.map((step, index) => `
     <li class="step-item" data-step="${index}">
-      <span class="step-num">${index + 1}</span>
+      <div class="step-header">
+        <h3 class="step-heading">Step ${index + 1}</h3>
+        <button type="button" class="step-play" data-step="${index}" aria-label="Assisted-AI for step ${index + 1}">Assisted-AI</button>
+      </div>
       <p class="step-text">${escapeHtml(step)}</p>
-      <button type="button" class="step-play" data-step="${index}" aria-label="Listen to step ${index + 1}">▶ Listen</button>
     </li>
   `).join("");
+
+  resetAssistant(currentRecipe);
 
   stepsList.querySelectorAll(".step-play").forEach((btn) => {
     btn.addEventListener("click", async (e) => {
@@ -290,7 +702,7 @@ function openRecipe(id) {
       stopAudio();
       playAllAbort = false;
       const idx = Number(btn.dataset.step);
-      await speakStep(idx, recipe.steps[idx]);
+      await speakStep(idx, currentRecipe.steps[idx]);
     });
   });
 
@@ -338,14 +750,14 @@ suggestBtn.addEventListener("click", async () => {
     renderRecipeCards(data.suggestions, data.saleItems);
 
     resultsPanel.hidden = false;
-    layout.classList.add("has-results");
+    if (inputScreen) inputScreen.hidden = true;
     recipeDetail.hidden = true;
     resultsPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   } catch {
     showToast("Something went wrong. Is the server running?");
   } finally {
     suggestBtn.disabled = false;
-    suggestBtn.innerHTML = '<span class="btn-icon">✦</span> Find dinner ideas';
+    suggestBtn.textContent = "Find dinner ideas";
   }
 });
 
@@ -387,12 +799,16 @@ function renderSavingsList(deals) {
   }).join("");
 }
 
-fetchSalesBtn.addEventListener("click", async () => {
-  fetchSalesBtn.disabled = true;
-  fetchSalesBtn.textContent = "Loading sales…";
+async function loadSalesFromApi({ silent = false } = {}) {
+  if (!silent) {
+    fetchSalesBtn.disabled = true;
+    fetchSalesBtn.textContent = "Loading sales…";
+  }
   fetchStatus.hidden = false;
-  fetchStatus.className = "fetch-status loading";
-  fetchStatus.textContent = "Loading Apify deals and checking Jumbo pages for savings…";
+  fetchStatus.className = "status-text loading";
+  fetchStatus.textContent = silent
+    ? "Loading demo Jumbo deals…"
+    : "Loading Apify deals and checking Jumbo pages for savings…";
   savingsPanel.hidden = true;
 
   try {
@@ -408,9 +824,9 @@ fetchSalesBtn.addEventListener("click", async () => {
     }
 
     if (!data.saleItems?.length) {
-      fetchStatus.className = "fetch-status error";
+      fetchStatus.className = "status-text error";
       fetchStatus.textContent = "No sale items found in the dataset.";
-      showToast("No sales found");
+      if (!silent) showToast("No sales found");
       return;
     }
 
@@ -419,28 +835,35 @@ fetchSalesBtn.addEventListener("click", async () => {
     renderSavingsList(data.deals);
     const store = data.supermarket ? ` from ${data.supermarket}` : "";
     const withSavings = data.deals.filter((d) => d.savingsText || d.promotionTag).length;
-    fetchStatus.className = "fetch-status";
-    fetchStatus.textContent = `Loaded ${data.count} deals${store} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
-    showToast(`Loaded ${withSavings} deals with savings`);
-    saleInput.focus();
+    const demoLabel = data.demo ? " (demo)" : "";
+    fetchStatus.className = "status-text";
+    fetchStatus.textContent = `Loaded ${data.count} deals${store}${demoLabel} · ${withSavings} with savings found · ${data.ingredientCount} ingredients for matching.`;
+    if (!silent) {
+      showToast(data.demo ? `Loaded ${withSavings} demo deals` : `Loaded ${withSavings} deals with savings`);
+      saleInput.focus();
+    }
   } catch (error) {
-    fetchStatus.className = "fetch-status error";
+    fetchStatus.className = "status-text error";
     fetchStatus.textContent = error.message;
-    showToast(error.message);
+    if (!silent) showToast(error.message);
   } finally {
     fetchSalesBtn.disabled = false;
     fetchSalesBtn.textContent = "↓ Load sales from Apify";
   }
-});
+}
+
+fetchSalesBtn.addEventListener("click", () => loadSalesFromApi());
 
 backBtn.addEventListener("click", () => {
   stopAudio();
   recipeDetail.hidden = true;
   resultsPanel.hidden = false;
+  if (inputScreen) inputScreen.hidden = false;
 });
 
 playAllBtn.addEventListener("click", playAllSteps);
 stopBtn.addEventListener("click", stopAudio);
+stepConfirmBtn?.addEventListener("click", () => resolveStepConfirm(true));
 
 loadVoices();
 
@@ -448,15 +871,12 @@ fetch("/api/health")
   .then((res) => res.json())
   .then((data) => {
     if (!data.elevenlabsConfigured) {
-      showToast("ElevenLabs key missing — audio won't work");
+      showToast("Assisted-AI voice key missing — audio won't work");
     }
-    if (!data.apifyConfigured) {
-      console.warn("Apify token missing — sale fetching disabled");
-    }
-    if (!data.llmConfigured) {
-      console.warn("OpenAI key missing — using rule-based recipes");
+    if (!data.apifyConfigured || data.demoSalesAvailable) {
+      loadSalesFromApi({ silent: true });
     }
   })
   .catch(() => {
-    showToast("Start the server with: py server.py");
+    showToast("Start the server with: npm start");
   });

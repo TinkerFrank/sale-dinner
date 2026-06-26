@@ -251,6 +251,9 @@ const RECIPES = [
   }
 ];
 
+const { attachRecipeCover } = require("./covers");
+const { attachMeasuredIngredients } = require("./ingredients");
+
 function normalize(text) {
   return text
     .toLowerCase()
@@ -314,13 +317,13 @@ function suggestRecipes(saleItemsRaw, limit = 3) {
   const suggestions = RECIPES.map((recipe) => {
     const { matched, unmatched, score, matchRatio } = scoreRecipe(recipe, saleItems);
 
-    return {
+    return attachMeasuredIngredients(attachRecipeCover({
       ...recipe,
       matchedIngredients: [...new Set(matched)],
       missingIngredients: [...new Set(unmatched)].slice(0, 6),
       matchPercent: Math.round(matchRatio * 100),
       score
-    };
+    }));
   })
     .filter((recipe) => recipe.matchedIngredients.length >= 2)
     .sort((a, b) => b.score - a.score)
